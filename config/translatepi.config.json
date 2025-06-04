@@ -1,0 +1,34 @@
+{
+  "siteName": "TranslatePi.ai",
+  "description": "Translating Pi = Expanding, Extending, and Resisting Collapse (Now)",
+  "version": "0.1.0",
+  "author": "thinkthoughts",
+  "license": "MIT",
+  "defaultTheme": "dark",
+  "enableDarkModeToggle": true,
+  "entryEquation": "c = √(E / m) ≠ -1 ≠ ±1(9424Pi) ≠ 9423Pi",
+  "routes": {
+    "home": "/",
+    "readme": "/README.html",
+    "equation": "/#equation",
+    "journalism": "/#journalism",
+    "llm": "/#llm"
+  },
+  "api": {
+    "enabled": true,
+    "base": "/endpoints",
+    "endpoints": [
+      "equation.js",
+      "journalism.js",
+      "llm.js",
+      "references.json",
+      "glossary.json"
+    ]
+  },
+  "modules": {
+    "shared": true,
+    "sites": [
+      "translatepi.ai"
+    ]
+  }
+}
