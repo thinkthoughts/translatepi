@@ -8,7 +8,7 @@ This project builds the TranslatePi.ai site and documentation: a science-rooted,
 - Memory Structure ≠ Collapse
 - 1+1+1 Journalism = Anti-Supremacist Intelligence
 
-Stay grounded, stay expanding.  
+Stay grounded; keep your cool (now):
 🚦👈🏽 #TranslatePi
 
 ## Live Site (soon):
