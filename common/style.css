@@ -1,0 +1,61 @@
+:root {
+  --bg-light: #ffffff;
+  --text-light: #111111;
+  --link-light: #0077cc;
+  --bg-dark: #0e0e0e;
+  --text-dark: #e0e0e0;
+  --link-dark: #ffc57a;
+
+  --font-family: 'Segoe UI', sans-serif;
+  --max-width: 800px;
+}
+
+body {
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 2rem;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+h1, h2 {
+  color: #c00;
+}
+
+a {
+  color: var(--link-light);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+code {
+  background: #f4f4f4;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+.footer {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Dark mode overrides */
+body.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+body.dark-mode a {
+  color: var(--link-dark);
+}
+body.dark-mode code {
+  background-color: #1c1c1c;
+}
