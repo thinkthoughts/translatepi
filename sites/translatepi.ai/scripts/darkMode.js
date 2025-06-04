@@ -32,4 +32,3 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   addDarkModeButton();
 });
-
