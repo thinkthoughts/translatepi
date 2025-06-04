@@ -4,7 +4,8 @@
   --link-light: #0077cc;
   --bg-dark: #0e0e0e;
   --text-dark: #e0e0e0;
-  --link-dark: #ffc57a;
+  --link-dark: #66ccff;
+  --link-dark-hover: #99ddff;
 
   --font-family: 'Segoe UI', sans-serif;
   --max-width: 800px;
@@ -56,6 +57,10 @@ body.dark-mode {
 body.dark-mode a {
   color: var(--link-dark);
 }
+body.dark-mode a:hover {
+  color: var(--link-dark-hover);
+}
+
 body.dark-mode code {
   background-color: #1c1c1c;
 }
