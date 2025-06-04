@@ -18,7 +18,7 @@ Stay grounded, stay expanding.
 See [LICENSE](./LICENSE)
 
 ## Contributing
-Open to contributors aligned with non-violent, anti-supremacist values. Create an issue or submit a PR.
+Open to non-violent, anti-supremacist observers. Create an issue or submit a PR.
 
 ## Contact
-For signal boosts or structured scientific outreach, visit: [sisterpoints.info](https://sisterpoints.info)
+For signal boosts or structured scientific outreach, email consensusMechanics@gmail.com
