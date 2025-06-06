@@ -64,3 +64,49 @@ body.dark-mode a:hover {
 body.dark-mode code {
   background-color: #1c1c1c;
 }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 1rem;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+th {
+  background-color: #222;
+  color: #ffc57a;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #111;
+}
+
+tr:hover {
+  background-color: #333;
+}
+
+@media (prefers-color-scheme: light) {
+  th {
+    background-color: #e0e0e0;
+    color: #333;
+  }
+
+  td {
+    border-color: #aaa;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  tr:hover {
+    background-color: #ddd;
+  }
+}
+
