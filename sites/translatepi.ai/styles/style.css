@@ -74,13 +74,17 @@ table {
 th, td {
   padding: 0.75rem 1rem;
   text-align: left;
-  border: 1px solid #ccc;
+  border: 1px solid #666;
 }
 
 th {
   background-color: #222;
   color: #ffc57a;
   font-weight: bold;
+}
+
+tr:nth-child(odd) {
+  background-color: #181818;
 }
 
 tr:nth-child(even) {
@@ -101,12 +105,17 @@ tr:hover {
     border-color: #aaa;
   }
 
+  tr:nth-child(odd) {
+    background-color: #fff;
+  }
+
   tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #f6f6f6;
   }
 
   tr:hover {
     background-color: #ddd;
   }
 }
+
 
