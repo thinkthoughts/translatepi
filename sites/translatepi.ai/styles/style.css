@@ -24,9 +24,34 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-h1, h2 {
-  color: #c00;
+/* Default (dark mode) heading colors */
+h1 {
+  color: #90caff; /* light sky blue */
 }
+
+h2 {
+  color: #66b2ff; /* medium blue */
+}
+
+h3, h4, h5, h6 {
+  color: #3399ff; /* deeper blue */
+}
+
+/* Light mode overrides */
+@media (prefers-color-scheme: light) {
+  h1 {
+    color: #004080; /* navy blue */
+  }
+
+  h2 {
+    color: #0066cc; /* strong medium blue */
+  }
+
+  h3, h4, h5, h6 {
+    color: #1a8cff; /* lighter blue for subheadings */
+  }
+}
+
 
 a {
   color: var(--link-light);
