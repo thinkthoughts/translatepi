@@ -69,6 +69,7 @@ table {
   border-collapse: collapse;
   margin: 2rem 0;
   font-size: 1rem;
+  color: #e0e0e0; /* Default dark mode text */
 }
 
 th, td {
@@ -96,9 +97,13 @@ tr:hover {
 }
 
 @media (prefers-color-scheme: light) {
+  table {
+    color: #111; /* Light mode text color */
+  }
+
   th {
     background-color: #e0e0e0;
-    color: #333;
+    color: #222;
   }
 
   td {
@@ -117,5 +122,3 @@ tr:hover {
     background-color: #ddd;
   }
 }
-
-
