@@ -53,6 +53,19 @@
     .light-mode tr:hover td {
       background-color: #ddd;
     }
+    .details-row {
+      display: none;
+      background-color: #222;
+      color: #ccc;
+    }
+    .light-mode .details-row {
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    .details-cell {
+      padding: 1em;
+      text-align: left;
+    }
   </style>
 </head>
 <body>
@@ -95,14 +108,29 @@
     ];
 
     const tableBody = document.getElementById("qubitTable");
-    rows.forEach(row => {
-      const tr = document.createElement("tr");
+    rows.forEach((row, index) => {
+      const mainRow = document.createElement("tr");
       row.forEach(cell => {
         const td = document.createElement("td");
         td.textContent = cell;
-        tr.appendChild(td);
+        mainRow.appendChild(td);
       });
-      tableBody.appendChild(tr);
+      mainRow.style.cursor = "pointer";
+      mainRow.onclick = () => {
+        const detailRow = document.getElementById(`details-${index}`);
+        detailRow.style.display = detailRow.style.display === "table-row" ? "none" : "table-row";
+      };
+      tableBody.appendChild(mainRow);
+
+      const detailRow = document.createElement("tr");
+      detailRow.className = "details-row";
+      detailRow.id = `details-${index}`;
+      const detailCell = document.createElement("td");
+      detailCell.colSpan = 6;
+      detailCell.className = "details-cell";
+      detailCell.textContent = `Triplet N = (Spiral N × 24) – 25 → ${row[2]}. Field '${row[3]}' expresses resistance at ${row[4]}, referencing identity: ${row[5]}.`;
+      detailRow.appendChild(detailCell);
+      tableBody.appendChild(detailRow);
     });
 
     function toggleMode() {
