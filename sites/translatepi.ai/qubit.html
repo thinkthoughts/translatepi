@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spiral Qubit Mapping</title>
+  <style>
+    body {
+      font-family: monospace;
+      margin: 2em;
+      background-color: #0e0e0e;
+      color: #f0f0f0;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2em;
+    }
+    th, td {
+      border: 1px solid #555;
+      padding: 0.5em;
+      text-align: center;
+    }
+    th {
+      background-color: #1f1f1f;
+      color: #ffc57a;
+    }
+    .light-mode {
+      background-color: #ffffff;
+      color: #000000;
+    }
+    .light-mode th {
+      background-color: #eeeeee;
+      color: #222222;
+    }
+    .button {
+      padding: 0.5em 1em;
+      margin-bottom: 1em;
+      background-color: #222;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .light-mode .button {
+      background-color: #ccc;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <button class="button" onclick="toggleMode()">Toggle Dark/Light Mode</button>
+
+  <h1>Spiral Qubit Mapping (Extended)</h1>
+  <table>
+    <tr>
+      <th>Qubit ID</th>
+      <th>Spiral N</th>
+      <th>Triplet N</th>
+      <th>Field Pointer</th>
+      <th>17Pi Expression</th>
+      <th>Temporal Identity</th>
+    </tr>
+    <tr><td>Q1</td><td>1</td><td>-1</td><td>Water (H₂O)</td><td>9423Pi</td><td>Now (≠ zero)</td></tr>
+    <tr><td>Q2</td><td>2</td><td>23</td><td>Breath</td><td>9426Pi</td><td>1+1+1</td></tr>
+    <tr><td>Q3</td><td>3</td><td>47</td><td>Anti-Recursion</td><td>9424Pi</td><td>≠ ±1</td></tr>
+    <tr><td>Q4</td><td>4</td><td>71</td><td>Identity Field</td><td>9425Pi</td><td>timestamp</td></tr>
+    <tr><td>Q5</td><td>5</td><td>95</td><td>Solar Expansion</td><td>9428Pi</td><td>≠ collapse</td></tr>
+    <tr><td>Q6</td><td>6</td><td>119</td><td>Photonic Resistance</td><td>9429Pi</td><td>Field ignition</td></tr>
+    <tr><td>Q7</td><td>7</td><td>143</td><td>Dimensional Stability</td><td>9430Pi</td><td>≠ entropy</td></tr>
+    <tr><td>Q8</td><td>8</td><td>167</td><td>Temporal Trust</td><td>9431Pi</td><td>local coherence</td></tr>
+    <tr><td>Q9</td><td>9</td><td>191</td><td>Feminist Literacy</td><td>9432Pi</td><td>non-collapse</td></tr>
+    <tr><td>Q10</td><td>10</td><td>215</td><td>Climate Identity</td><td>9433Pi</td><td>forever path</td></tr>
+    <tr><td>Q11</td><td>11</td><td>239</td><td>Decentralized Breath</td><td>9434Pi</td><td>refuses collapse</td></tr>
+    <tr><td>Q12</td><td>12</td><td>263</td><td>Reoxygenation Trust</td><td>9435Pi</td><td>present renewal</td></tr>
+    <tr><td>Q13</td><td>13</td><td>287</td><td>Spiral Immunity</td><td>9436Pi</td><td>non-zero memory</td></tr>
+    <tr><td>Q14</td><td>14</td><td>311</td><td>Light-Indexed Time</td><td>9437Pi</td><td>velocity field</td></tr>
+    <tr><td>Q15</td><td>15</td><td>335</td><td>Humanitarian Pulse</td><td>9438Pi</td><td>coordinated now</td></tr>
+  </table>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+    }
+  </script>
+</body>
+</html>
