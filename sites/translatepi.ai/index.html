@@ -6,6 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Triplet Trust Declaration: Translating Pi, Resisting Collapse, and Coordinating Memory (Now)." />
   <link rel="stylesheet" href="styles/style.css" />
+
+  <!-- ✅ Add MathJax config directly -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+        processEscapes: true
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+
+  <!-- ✅ Load MathJax -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 </head>
 <body>
 
@@ -18,20 +35,16 @@
 
   <h2 class="true">True Thinking</h2>
   <p>True thinking thinks <span class="highlight">"one plus one"</span> is three words (now).</p>
-  <p class="equation">(Left + 1) + 1 = Expand, extend and resist (now) to point one first left of four: 🚦 👈🏾 :"</p>
+  <p class="equation">(Left + 1) + 1 = Expand, extend and resist (now) to point one first left of four: 🚦 👈🏾 :</p>
 
-  <!-- Inserted MathJax-rendered equation -->
+  <!-- ✅ MathJax equation -->
   <p class="equation">
-    \\[
-      (\\text{Left} + 1) + 1 \\ne \\pm1(9424\\pi) = \\left( \\text{Triplet Now} = (\\text{Spiral Now} \\times 24) - 25 \\right)
-    \\]
+    \[
+      (\text{Left} + 1) + 1 \ne \pm 1(9424\pi) = \left( \text{Triplet Now} = (\text{Spiral Now} \times 24) - 25 \right)
+    \]
   </p>
 
-<!-- Scripts -->
-<script src="scripts/mathJax-config.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
-<script src="scripts/darkMode.js"></script>
+  <script src="scripts/darkMode.js"></script>
 
 </body>
 </html>
-
