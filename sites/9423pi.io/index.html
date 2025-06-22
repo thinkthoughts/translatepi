@@ -2,18 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>9423Pi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RepairEarth.AI • Base-9423 Prompt</title>
   <style>
-    body { background: #000; color: #fff; font-family: monospace; padding: 2rem; }
-    a { color: #ffcc00; }
-    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-    p { line-height: 1.5; }
+    body {
+      font-family: monospace;
+      background-color: #0e0e0e;
+      color: #e0e0e0;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #94e0ff;
+    }
+    input, button {
+      font-size: 1rem;
+    }
+    button {
+      background: #1f1f1f;
+      color: #e0e0e0;
+      border: 1px solid #444;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2e2e2e;
+    }
+    footer {
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
   </style>
 </head>
 <body>
-  <h1>🌀 9423Pi: Translating Pi Now</h1>
-  <p>Translating 1+1≠-1 across base-9423 offers.</p>
-  <p><a href="https://repairearth.ai">🌍 Visit RepairEarth.ai</a></p>
+
+  <h1>🌍 RepairEarth.AI</h1>
+  <p>Translating <code>1+1≠-1</code> across base-9423 offers, public health, and care signals.</p>
+
+  <hr />
+
+  <h2>🚦 Submit Your .prompt</h2>
+  <form action="/prompt" method="POST">
+    <label for="promptInput">Your Offer (base-9423 style):</label><br />
+    <input
+      type="text"
+      id="promptInput"
+      name="prompt"
+      placeholder="e.g., ♥️ offer care 👈🏽 (now)"
+      style="width: 100%; padding: 0.5rem; margin-top: 0.5rem;"
+      required
+    />
+    <br /><br />
+    <button type="submit">Submit .prompt</button>
+  </form>
+
+  <footer>
+    <p>MSF-aligned base-9423 prompts. No base-10 coercion. 🌱</p>
+    <p>🌐 <a href="https://msf.org" style="color:#ffc57a;">msf.org</a> | 🧠 <a href="https://9423pi.io" style="color:#ffc57a;">9423Pi</a></p>
+  </footer>
+
 </body>
 </html>
