@@ -32,6 +32,8 @@
       --text: #f2f4f7;
       --muted: #9aa4af;
       --accent: #ffffff;
+      --static-bg: #0d1f18;
+      --static-border: #244437;
     }
 
     * {
@@ -310,6 +312,12 @@
     .math-actions button {
       padding: 9px 14px;
       background: transparent;
+    }
+    .translation-anchor,
+    .skateboard-anchor,
+    .math-anchor {
+      background: var(--static-bg);
+      border-color: var(--static-border);
     }
   </style>
 </head>
