@@ -187,6 +187,51 @@
       display: none;
       color: #ffb4b4;
     }
+    .translation-section {
+      margin-top: 56px;
+    }
+    
+    .translation-anchor {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.035),
+          rgba(255,255,255,.01)
+        );
+    }
+    
+    .translation-display {
+      font-size: clamp(1.15rem, 3.5vw, 1.8rem);
+      text-align: center;
+      overflow-x: auto;
+    }
+    
+    .translation-rule {
+      margin-top: 18px;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.6;
+    }
+    
+    .translation-lift {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: .9rem;
+    }
+    
+    .translation-lift a {
+      color: var(--text);
+      text-underline-offset: 4px;
+    }
 
     .math-footer {
       margin-top: 56px;
@@ -304,11 +349,11 @@
       </div>
     </nav>
     
-    <section class="math-footer">
-      <div class="math-anchor">
+    <section class="translation-section">
+      <div class="translation-anchor">
         <div class="math-label">translation reading point</div>
     
-        <div class="math-display">
+        <div class="translation-display">
           \[
             \pi\ \text{symbol}
             \longrightarrow
@@ -320,10 +365,20 @@
           \]
         </div>
     
-        <div class="math-sub">
+        <div class="translation-rule">
           same \(\pi\) symbol \(\neq\) same specification
-          <br><br>
-          See \(\pi\) → translate \(\pi\).
+        </div>
+    
+        <div class="translation-lift">
+          <span>PiπΠ lift</span>
+          <span>→</span>
+          <a
+            href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/SpecialFunctions/Trigonometric/Basic.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Mathlib ↗
+          </a>
         </div>
       </div>
     </section>
