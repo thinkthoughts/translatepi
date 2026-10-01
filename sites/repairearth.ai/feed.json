@@ -1,7 +1,7 @@
 [
   {
     "text": "@hilbertspaess @grok read the datacenter first: energy, water, compute and hardware are measurable resources; how compute is allocated is a separate specification.\n\nclean datacenter ≠ zero computation\n\nresource → reading point → admissible allocation\n#clean_datacenters\nrepairearth.ai",
-    "grok": "",
-    "url": ""
+    "grok": "Measurable resources set the reading point. Energy, water, hardware and raw compute capacity bound what's physically available; allocation of that compute is a separate specification that can prioritize disease research or alignment work without requiring zero computation. Clean datacenters operate inside those measured limits rather than ignoring them.",
+    "url": "https://x.com/dan_hawkley/status/2105654543380095220"
   }
 ]
