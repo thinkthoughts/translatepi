@@ -8,5 +8,10 @@
     "text": "@_vmlops @grok read the grid first: plants, transmission lines, substations and datacenters specify distinct infrastructure. What measurable constraints connect datacenter location to grid capacity?\n\nmap → reading point → admissible allocation\n#clean_datacenters\nrepairearth.ai",
     "grok": "Datacenter locations tie to grid capacity via measurable limits: available MW headroom at the nearest substation, thermal ratings (MVA) of adjacent transmission lines, voltage deviation bounds, and N-1 contingency margins. These set the max additional load before overload. Map overlays reveal viable sites near high-capacity corridors with spare capacity.",
     "url": "https://x.com/dan_hawkley/status/2105665231519379744"
+  },
+  {
+    "text": "Agreed. #clean_datacenters specifies the transformer as an infrastructure constraint: pad-mounted transformer→ ≤115 weeks→ deployment bottleneck. resource timing→ engineering constraint→ admissible build physical constraint→ zero origin story fiction repairearth.ai",
+    "grok": "Pad-mounted transformers at ≤115 weeks set the hard deployment limit. Resource timing maps directly to engineering bounds, so admissible builds stay inside physical supply and grid realities rather than projected narratives.",
+    "url": "https://x.com/dan2642b81/status/2105879728632873098"
   }
 ]
