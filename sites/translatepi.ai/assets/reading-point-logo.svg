@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Reading Point logo</title>
+  <desc id="desc">Eight equally spaced points around a circular ring represent the reduced residue classes modulo 30; the top point is highlighted in Reading Point pink.</desc>
+  <circle cx="256" cy="256" r="142" fill="none" stroke="#6F747C" stroke-width="8"/>
+  <circle cx="256.00" cy="114.00" r="26" fill="#D03878"/><circle cx="356.41" cy="155.59" r="20" fill="#8F949C"/><circle cx="398.00" cy="256.00" r="20" fill="#8F949C"/><circle cx="356.41" cy="356.41" r="20" fill="#8F949C"/><circle cx="256.00" cy="398.00" r="20" fill="#8F949C"/><circle cx="155.59" cy="356.41" r="20" fill="#8F949C"/><circle cx="114.00" cy="256.00" r="20" fill="#8F949C"/><circle cx="155.59" cy="155.59" r="20" fill="#8F949C"/>
+</svg>
