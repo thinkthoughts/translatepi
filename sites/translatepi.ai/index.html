@@ -20,7 +20,7 @@
         <span><strong>translatepi.ai</strong><small>The reading point. PiπΠ.</small></span>
       </a>
       <nav class="nav" aria-label="Paper navigation">
-        <a href="#mathematics">Mathematics</a><a href="#blueprint">Blueprint</a><a href="#verification">Verification</a><a href="https://github.com/thinkthoughts/lean-bgp212">GitHub ↗</a>
+        <a href="#mathematics">Mathematics</a><a href="#blueprint">Blueprint</a><a href="#verification">Verification</a><a href="/main.pdf">PDF ↗</a><a href="https://github.com/thinkthoughts/lean-bgp212">GitHub ↗</a>
       </nav>
     </div>
   </header>
@@ -29,8 +29,8 @@
       <div class="eyebrow">Mathematics · Lean 4 · exact certificates</div>
       <h1 id="main-title">Exact Rational Integration over Constrained Simplices</h1>
       <p class="subtitle">Symmetric polynomial bases, explicit marginal geometry, and reproducible formal verification, developed through the study of bounded gaps between primes.</p>
-      <div class="actions"><a class="button" href="#blueprint">Explore the proof outline ↓</a><a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212">Lean source ↗</a></div>
-      <p class="quiet">Mathematics paper and standalone interactive blueprint in preparation. This page documents the verified project scope without claiming a complete unconditional 212 proof.</p>
+      <div class="actions"><a class="button" href="/main.pdf">Read paper · v0.2 ↗</a><a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/paper/THEOREMS.md">Theorem inventory ↗</a><a class="button alt" href="#blueprint">Proof outline ↓</a></div>
+      <p class="quiet">Draft v0.2 is available as a PDF. An interactive theorem-level blueprint remains in development. The published results do not constitute an unconditional Lean proof of the 212 bound.</p>
     </section>
     <section id="mathematics" class="section">
       <div class="eyebrow">01 / Mathematical objects</div><h2>From constraints to exact integrals</h2>
@@ -38,6 +38,7 @@
       <div class="two">
         <article class="card"><h3>The polynomial basis</h3><p>The 846-dimensional <code>B₂₁</code> basis, with polynomial generators built from a slack power and power-sum factors.</p></article>
         <article class="card"><h3>Exact integration</h3><p>General monomial formulas for <i>I</i><sub>T</sub>, with arbitrary cap functions and a worked exact rational Gram entry.</p></article>
+        <article class="card"><h3>Two-aggregate integration · V2e-A</h3><p>Weighted high-dimensional simplex integrals reduce to two aggregate variables. Rational polynomial forms and a worked certificate of 19/7680 are kernel-checked.</p></article>
         <article class="card"><h3>Marginal-fibre geometry</h3><p>The exact piecewise fibre endpoint for <i>J</i><sub>T</sub>, empty-fibre theorems, marginal identity, and inner polynomial integral, independently verified on the VPS.</p></article>
         <article class="card"><h3>Bounded prime gaps</h3><p>Combinatorial packing and the verified conditional implication from DHL[45,2] to <i>H</i><sub>1</sub> ≤ 212; additional analytic and variational obligations remain.</p></article>
       </div>
@@ -56,15 +57,16 @@
         <article class="stage"><span class="status">VERIFIED</span><strong>Arithmetic and packing</strong><small>GDT/CRT, admissibility, 455 packing roots, combinatorial assembly</small></article>
         <article class="stage"><span class="status">VERIFIED</span><strong>Polynomial foundations</strong><small>B₂₁, simplex integrals, rational <i>I</i><sub>T</sub> entries</small></article>
         <article class="stage"><span class="status">VERIFIED · V2d</span><strong>Marginal fibres</strong><small>V2d: Lemma 9.2 and inner polynomial integral</small></article>
-        <article class="stage"><span class="status pending">OUTSTANDING</span><strong>General <i>J</i><sub>T</sub></strong><small>Aggregate Dirichlet integration, piecewise polygon cells</small></article>
+        <article class="stage"><span class="status">VERIFIED · V2e-A</span><strong>Two-aggregate Dirichlet integrals</strong><small>One- and two-group formulas, rational specializations, endpoint aggregates and cut-triangle example</small></article>
+        <article class="stage"><span class="status pending">IN DEVELOPMENT</span><strong>General <i>J</i><sub>T</sub></strong><small>Polygon-cell branch integrations (V2e-B), then general marginal Gram entries (V2f)</small></article>
         <article class="stage"><span class="status pending">OUTSTANDING</span><strong>Positivity certificate</strong><small>Optimized coefficients and exact inequalities</small></article>
         <article class="stage"><span class="status">VERIFIED CONDITIONALLY</span><strong>Final implication</strong><small>DHL[45,2] → <i>H</i><sub>1</sub> ≤ 212, given its stated hypothesis</small></article>
       </div>
     </section>
     <section id="verification" class="section">
       <div class="eyebrow">04 / Reproducibility</div><h2>Readable mathematics, checkable evidence</h2>
-      <p>Proof statements and certificates are preserved in the public repository, together with Challenge/Solution pairs, Comparator configurations, negative controls, pinned toolchain information, and result records. All fifteen Comparator suites have passed independent VPS verification, including V2d’s fibre theorem. Its four positive controls were accepted and four negative controls rejected. The V2d proof is recorded at commit <a href="https://github.com/thinkthoughts/lean-bgp212/commit/52fd36a">52fd36a</a>, with VPS verification provenance at <a href="https://github.com/thinkthoughts/lean-bgp212/commit/90055db">90055db</a>.</p>
-      <div class="actions"><a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/results/V2d_fibre.yaml">V2d verification record ↗</a><a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212/tree/main/specs/results">All verification records ↗</a><a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212">Browse source code ↗</a></div>
+      <p>Proof statements and certificates are preserved in the public repository with Challenge/Solution pairs, Comparator configurations, positive and negative controls, pinned toolchain information, and result records. <strong>All 16 Comparator suites passed independent VPS verification</strong>, including V2e-A's two-aggregate Dirichlet integration. Its five positive controls were accepted and four negative controls rejected. The V2e-A proof is published at commit <a href="https://github.com/thinkthoughts/lean-bgp212/commit/01644e6">01644e6</a> and its VPS provenance at <a href="https://github.com/thinkthoughts/lean-bgp212/commit/38606c0">38606c0</a>.</p>
+      <div class="actions"><a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/results/V2e_A_aggregate.yaml">V2e-A verification record ↗</a><a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/paper/main.tex">LaTeX manuscript ↗</a><a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212/tree/main/specs/results">All verification records ↗</a></div>
       <p class="notes">The mathematical inspiration and bounded-prime-gap target are credited to the underlying research, including <a href="https://primegaps.axiommath.ai/">Axiom Math's original project</a>. This is an independent formalization effort, not an Axiom Math publication or endorsement.</p>
     </section>
   </main>
