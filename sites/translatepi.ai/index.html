@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#090a0d">
-  <meta name="description" content="Exact Rational Integration over Constrained Simplexes, v0.6: a verified 2×2 marginal Gram block, Lean 4 proofs, rational certificates, and a reproducible verification trail.">
+  <meta name="description" content="Exact Rational Integration over Constrained Simplices, v0.7: general rational marginal Gram-entry theorem for B₂₁, four certified Table 3 entries, and 21/21 VPS Comparator verification.">
   <title>Exact Rational Integration over Constrained Simplices · translatepi.ai</title>
   <link rel="icon" href="assets/reading-point-badge.svg" type="image/svg+xml">
   <style>
@@ -29,8 +29,8 @@
       <div class="eyebrow">Mathematics · Lean 4 · exact certificates</div>
       <h1 id="main-title">Exact Rational Integration over Constrained Simplices</h1>
       <p class="subtitle">Symmetric polynomial bases, explicit marginal geometry, and reproducible formal verification, developed through the study of bounded gaps between primes.</p>
-      <div class="actions"><a class="button" href="/main.pdf">Read paper · v0.6 ↗</a><a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/paper/THEOREMS.md">Theorem inventory ↗</a><a class="button alt" href="#blueprint">Proof outline ↓</a></div>
-      <p class="quiet">Read the v0.6 manuscript: three exact marginal Gram entries form a complete 2×2 block for the generators 1 and P₂, with Lean-checked rational certificates and reproducible verification records.</p>
+      <div class="actions"><a class="button" href="/main.pdf">Read paper · v0.7 ↗</a><a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/paper/THEOREMS.md">Theorem inventory ↗</a><a class="button alt" href="#blueprint">Proof outline ↓</a></div>
+      <p class="quiet">Read the v0.7 manuscript: an exact rational representation for every pair of generators in the 846-dimensional B₂₁ space, four evaluated Table 3 entries, and an independently verified 21/21 Comparator regression.</p>
     </section>
     <section id="mathematics" class="section">
       <div class="eyebrow">01 / Mathematical objects</div><h2>From constraints to exact integrals</h2>
@@ -43,6 +43,7 @@
         <article class="card"><h3>Exact marginal Gram entry · V2f</h3><p>All endpoint branches integrated and assembled: the constant-generator entry <i>J</i><sub>T</sub>[1,1] ≈ 1.1193487646 × 10⁻⁵⁵, certified exactly from 133 rational pieces.</p></article>
         <article class="card"><h3>Bilinear power-sum Gram entry · V2g</h3><p>The first nonconstant marginal entry <i>J</i><sub>T</sub>[P₂,1] ≈ 4.99943968764 × 10⁻⁵⁷, certified using 133 rational pieces and 266 exact lemmas. Coordinate placement and shifted power sums are formalized.</p></article>
         <article class="card"><h3>Power-sum-square Gram entry · V2h</h3><p>The diagonal entry <i>J</i><sub>T</sub>[P₂,P₂] ≈ 2.27107 × 10⁻⁵⁸ completes the 2×2 block. Two-coordinate placements, diagonal terms, and shared moment-table certificates are verified by Lean.</p></article>
+        <article class="card"><h3>General marginal Gram entries · V2i</h3><p>For arbitrary generators G<sub>a,λ</sub> = (L − P₁)<sup>a</sup>P<sub>λ</sub>, Lean proves a rational marginal Gram-entry representation. The Table 3 theorem covers every generator pair in B₂₁; selected entries are evaluated with exact certificates.</p></article>
         <article class="card"><h3>Marginal-fibre geometry</h3><p>The exact piecewise fibre endpoint for <i>J</i><sub>T</sub>, empty-fibre theorems, marginal identity, and inner polynomial integral, independently verified on the VPS.</p></article>
         <article class="card"><h3>Bounded prime gaps</h3><p>Combinatorial packing and the verified conditional implication from DHL[45,2] to <i>H</i><sub>1</sub> ≤ 212; additional analytic and variational obligations remain.</p></article>
       </div>
@@ -51,7 +52,7 @@
       <div class="eyebrow">02 / Verified mathematics</div><h2>A verified implication and its research pathway</h2>
       <div class="proof">
         <div class="formula">DHL[45,2] &nbsp;⟹&nbsp; <i>H</i><sub>1</sub> ≤ 212<small>Lean-verified implication under the stated DHL[45,2] hypothesis.</small></div>
-        <p class="notes">Our formalization now certifies all three entries of the symmetric 2×2 marginal Gram block on {1, P₂}: <i>J</i><sub>T</sub>[1,1], <i>J</i><sub>T</sub>[P₂,1], and <i>J</i><sub>T</sub>[P₂,P₂]. V2h reuses exact rational moments across the diagonal and distinct-coordinate terms. Work continues toward general polynomial generators and variational positivity.</p>
+        <p class="notes">V2f–V2h certify the complete symmetric 2×2 marginal Gram block on {1, P₂}. V2i proves the general exact rational representation for every pair of generators in B₂₁ and certifies additional selected Table 3 entries. The full numerical 846×846 matrix and variational positivity remain open work.</p>
       </div>
     </section>
     <section class="section" id="gram-block">
@@ -65,7 +66,7 @@
         </div>
         <small>The numerical Cauchy–Schwarz ratio J<sub>T</sub>[P₂,1]² / (J<sub>T</sub>[1,1] · J<sub>T</sub>[P₂,P₂]) ≈ 0.984. The matrix entries are certified individually; a separate exact determinant-positivity certificate is a further target.</small>
       </div>
-      <p>V2h handles i = j separately from distinct-coordinate placements. Its reusable moment-table construction groups polynomial weights by aggregate degrees rather than recalculating each placement independently.</p>
+      <p>V2h handles diagonal and distinct-coordinate placements. V2i generalizes the placement construction to products of arbitrary power sums and certifies further Table 3 entries: J<sub>T</sub>[P₄,1] ≈ 2.75169 × 10<sup>−59</sup>, J<sub>T</sub>[P₂²,1] ≈ 2.28799 × 10<sup>−58</sup>, and J<sub>T</sub>[L−P₁,1] ≈ 5.52809 × 10<sup>−57</sup>. These approximations correspond to exact rationals in the Lean certificates.</p>
     </section>
     <section id="blueprint" class="section">
       <div class="eyebrow">04 / Proof blueprint</div><h2>Follow the mathematical dependencies</h2>
@@ -79,15 +80,16 @@
         <article class="stage"><span class="status">VERIFIED · V2f</span><strong>First marginal Gram entry</strong><small>All endpoint branches, 133 exact pieces, J<sub>T</sub>[1,1] in rational form</small></article>
         <article class="stage"><span class="status">VERIFIED · V2g</span><strong>First power-sum marginal entry</strong><small>Bilinear form, coordinate placement, 266 exact certificate lemmas; J<sub>T</sub>[P₂,1]</small></article>
         <article class="stage"><span class="status">VERIFIED · V2h</span><strong>2×2 marginal Gram block</strong><small>J<sub>T</sub>[P₂,P₂], diagonal and distinct-coordinate placements, 14 resumable rational certificate rows</small></article>
-        <article class="stage"><span class="status pending">IN DEVELOPMENT</span><strong>General marginal Gram entries</strong><small>Reusable moment-table method and set-partition placements for additional polynomial generators</small></article>
+        <article class="stage"><span class="status">VERIFIED · V2i</span><strong>General marginal Gram entries</strong><small>Exact rational representation for every B₂₁ generator pair; four Table 3 evaluations, 33-statement Comparator and 21/21 VPS regression</small></article>
+        <article class="stage"><span class="status pending">NEXT · V2j</span><strong>Shared-moment aggregation</strong><small>Coefficient collection across Gram-entry combinations; development-container verification reported, VPS verification pending</small></article>
         <article class="stage"><span class="status pending">NEXT TARGET</span><strong>Positivity certificate</strong><small>Optimized coefficients and exact inequalities</small></article>
         <article class="stage"><span class="status">VERIFIED CONDITIONALLY</span><strong>Final implication</strong><small>DHL[45,2] → <i>H</i><sub>1</sub> ≤ 212, given its stated hypothesis</small></article>
       </div>
     </section>
     <section id="verification" class="section">
       <div class="eyebrow">05 / Reproducibility</div><h2>Readable mathematics, checkable evidence</h2>
-        <p>Proof statements and certificates are preserved with Challenge/Solution pairs, Comparator configurations, reproducible Python checks, pinned dependencies, and result records. The prior V2g regression established <strong>19/19 VPS Comparator acceptances</strong>. The new V2h 27-statement Comparator separately reported <strong>“Lean default kernel accepts the solution”</strong> and <strong>“Your solution is okay!”</strong> on the VPS. A retained aggregate 20/20 regression log was unavailable, so that cumulative count remains unconfirmed. V2h uses 14 resumable certificate rows plus an assembly file. Proof commit: <a href="https://github.com/thinkthoughts/lean-bgp212/commit/6cef1f4">6cef1f4</a>; verification provenance: <a href="https://github.com/thinkthoughts/lean-bgp212/commit/a9b0e0c">a9b0e0c</a>.</p>
-      <div class="actions"><a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/results/V2h_power_sum_square.yaml">V2h verification record ↗</a><a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/paper/main.tex">LaTeX manuscript ↗</a><a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212/tree/main/specs/results">All verification records ↗</a></div>
+        <p>Proof statements and certificates are preserved with Challenge/Solution pairs, Comparator configurations, reproducible Python checks, pinned dependencies, and result records. The full V2i run on the VPS produced <strong>21/21 Comparator acceptance messages</strong> and <strong>exit status 0</strong>. The final 33-statement V2i suite reported <strong>“Lean default kernel accepts the solution”</strong> and <strong>“Your solution is okay!”</strong>. V2i uses 14 rational certificate-row files and a final assembly file. Verified proof snapshot: <a href="https://github.com/thinkthoughts/lean-bgp212/commit/a994d73">a994d73</a>; verification provenance: <a href="https://github.com/thinkthoughts/lean-bgp212/commit/486cf85">486cf85</a>. The earlier V2h suite also passed, though its cumulative 20/20 count was not preserved in a separate saved log.</p>
+      <div class="actions"><a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/results/V2i_gen_entry.yaml">V2i verification record ↗</a><a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/paper/main.tex">LaTeX manuscript ↗</a><a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212/tree/main/specs/results">All verification records ↗</a></div>
       <p class="notes">This independent Lean formalization builds on the mathematical argument in <a href="https://primegaps.axiommath.ai/">Axiom Math's bounded-prime-gap research</a>. The repository records our statements, proof terms, certificates, and verification provenance.</p>
     </section>
   </main>
