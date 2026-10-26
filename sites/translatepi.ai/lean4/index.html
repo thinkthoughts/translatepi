@@ -40,18 +40,18 @@
     <div class="hero"><div class="wrap">
       <div class="eyebrow">Mathematical development / Lean 4</div>
       <h1>Declarations, proofs,<br>verification records.</h1>
-      <p>Exact mathematical statements, typed dependencies, kernel checks, Comparator acceptance, and outstanding proof obligations. Each result retains its stated hypotheses.</p>
+      <p>Exact mathematical statements, typed dependencies, kernel checks, Comparator results, and proof obligations. Each theorem includes its hypotheses and verification record.</p>
       <div class="hero-links"><a class="action" href="#declarations">Browse declarations ↓</a><a class="action secondary" href="https://github.com/thinkthoughts/awards/tree/survey/prime-bridges/survey" target="_blank" rel="noopener">Source registry ↗</a><a class="action secondary" href="https://translatepi.ai/main.pdf">Exact integration paper ↗</a></div>
       <div class="metadata"><div class="meta"><small>Lean toolchain</small><strong>4.34.0-rc2</strong></div><div class="meta"><small>Mathlib pin</small><strong><code>85e3a25</code></strong></div><div class="meta"><small>BGP212 source</small><strong><code>89b43fa</code></strong></div><div class="meta"><small>Evidence snapshot</small><strong>October 2026 · EV-0006</strong></div></div>
     </div></div>
 
     <section id="summary"><div class="wrap">
       <div class="section-head"><h2>Verification snapshot</h2><div class="section-aside">Registry snapshot · manually reviewed</div></div>
-      <div class="notice"><strong>Scope:</strong> The theorem <code>InfinitelyManyTwinPrimes ↔ H1Le 2</code> establishes an equivalence of statements. It supplies no proof that infinitely many twin primes exist. Kernel checks and non-isolated Comparator runs are recorded separately from Linux-isolated acceptance.</div>
+      <div class="notice"><strong>Theorem:</strong> <code>InfinitelyManyTwinPrimes ↔ H1Le 2</code>. Its two directions have Lean kernel checks and axiom audits. Comparator results are recorded with their execution environments.</div>
       <div class="stats">
         <div class="stat"><div class="num">6</div><div class="label">Compiled dependency lifts</div><div class="detail">Kernel-checked or compiled upstream</div></div>
-        <div class="stat"><div class="num">1</div><div class="label">Comparator accepted</div><div class="detail">Non-isolating macOS execution</div></div>
-        <div class="stat"><div class="num">0</div><div class="label">Isolated Comparator verified</div><div class="detail">Linux reproduction pending</div></div>
+        <div class="stat"><div class="num">1</div><div class="label">Comparator accepted</div><div class="detail">macOS · non-isolating runner</div></div>
+        <div class="stat"><div class="num">Next</div><div class="label">Linux Comparator run</div><div class="detail">Landlock / landrun reproduction</div></div>
         <div class="stat"><div class="num">26</div><div class="label">Survey tests passing</div><div class="detail">Python tests · reported at EV-0006</div></div>
       </div>
     </div></section>
@@ -64,16 +64,16 @@
 
     <section id="dependencies"><div class="wrap">
       <div class="section-head"><h2>Proved dependencies</h2><div class="section-aside">PiπΠ · conditional arrows retain their premises</div></div>
-      <div class="dependency"><div class="chain"><div class="node">TwinPrimes<span>InfinitelyManyTwinPrimes</span></div><div class="arrow" aria-label="if and only if">⇔</div><div class="node">H₁ ≤ 2<span>twin_primes_iff_h1Le_two</span></div><div class="arrow" aria-label="implies">⇒</div><div class="node">H₁ ≤ 186<span>h1Le_mono</span></div></div><p class="dep-note">The equivalence and implication are kernel-checked. Neither arrow supplies an unconditional proof of its premise.</p></div>
+      <div class="dependency"><div class="chain"><div class="node">TwinPrimes<span>InfinitelyManyTwinPrimes</span></div><div class="arrow" aria-label="if and only if">⇔</div><div class="node">H₁ ≤ 2<span>twin_primes_iff_h1Le_two</span></div><div class="arrow" aria-label="implies">⇒</div><div class="node">H₁ ≤ 186<span>h1Le_mono</span></div></div><p class="dep-note">Kernel-checked: <code>twin_primes_iff_h1Le_two</code>, <code>h1Le_mono</code>, and <code>twin_primes_implies_h1Le_186</code>.</p></div>
     </div></section>
 
     <section id="record"><div class="wrap">
       <div class="section-head"><h2>Verification log</h2><div class="section-aside">Evidence records · newest first</div></div>
       <div class="timeline">
-        <article class="event"><time>EV-0006 · macOS arm64</time><h3><code>h1Le_mono</code> — Comparator accepted, non-isolating</h3><p>Comparator <code>19e111e</code>, lean4export <code>cacf989</code>. Output: “Your solution is okay!” Linux-isolated reproduction remains open. <a href="https://github.com/thinkthoughts/awards/tree/survey/prime-bridges/survey/evidence/comparator">Recorded output ↗</a></p></article>
+        <article class="event"><time>EV-0006 · macOS arm64</time><h3><code>h1Le_mono</code> — Comparator accepted · macOS runner</h3><p>Comparator <code>19e111e</code>, lean4export <code>cacf989</code>, execution mode: non-isolating. Output: “Your solution is okay!” <a href="https://github.com/thinkthoughts/awards/tree/survey/prime-bridges/survey/evidence/comparator">Recorded output ↗</a></p></article>
         <article class="event"><time>EV-0005 · Lean 4.34.0-rc2</time><h3><code>twin_primes_implies_h1Le_186</code> — kernel-checked</h3><p>Source hash <code>808cbc02…3617</code>. Only <code>propext</code>, <code>Classical.choice</code>, and <code>Quot.sound</code> reported.</p></article>
-        <article class="event"><time>EV-0004 · Lean 4.34.0-rc2</time><h3><code>twin_primes_iff_h1Le_two</code> — kernel-checked</h3><p>Source hash <code>4c269741…72e9</code>. Both directions audited; Comparator pending.</p></article>
-        <article class="event"><time>EV-0003 · Lean 4.34.0-rc2</time><h3><code>admissible_twin</code> and <code>h1Le_mono</code> — kernel-checked</h3><p>Source hashes <code>8a89082d…5c8</code> and <code>3be3ce31…4ded</code>. Comparator isolation remains separately tracked.</p></article>
+        <article class="event"><time>EV-0004 · Lean 4.34.0-rc2</time><h3><code>twin_primes_iff_h1Le_two</code> — kernel-checked</h3><p>Source hash <code>4c269741…72e9</code>. Both directions kernel-checked and axiom-audited.</p></article>
+        <article class="event"><time>EV-0003 · Lean 4.34.0-rc2</time><h3><code>admissible_twin</code> and <code>h1Le_mono</code> — kernel-checked</h3><p>Source hashes <code>8a89082d…5c8</code> and <code>3be3ce31…4ded</code>. Both declarations audited.</p></article>
       </div>
     </div></section>
 
@@ -87,14 +87,14 @@
       </div>
     </div></section>
   </main>
-  <footer><div class="wrap footer-inner"><span>translatepi.ai / lean4 · mathematical statements and evidence</span><span>Specification ≠ verification · <a href="https://translatepi.ai">translatepi.ai</a></span></div></footer>
+  <footer><div class="wrap footer-inner"><span>translatepi.ai / lean4 · mathematical statements and evidence</span><span>Definitions · proofs · certificates · <a href="https://translatepi.ai">translatepi.ai</a></span></div></footer>
   <script>
     // Initial publication snapshot. Replace this array from the versioned registry during deployment.
     const declarations = [
-      {id:'h1Le_mono',label:'Survey.PrimeBridges.h1Le_mono',role:'Monotonicity of bounded prime gaps',tag:'nonisolated',status:'Comparator · non-isolated',stmt:'∀ {D₁ D₂ : ℕ}, D₁ ≤ D₂ → BGP212.Gap.H1Le D₁ → BGP212.Gap.H1Le D₂',source:'SurveyBridges/H1LeMono.lean',hash:'3be3ce313a06fcbb4438ff43bae0afeb42f7a737c7761f9e5c78f60e1dca4ded',evidence:'EV-0002, EV-0003, EV-0006',deps:'BGP212.Gap.H1Le · Filter.frequently_atTop',note:'Comparator accepted on macOS with a non-isolating runner. Linux landrun acceptance pending.'},
-      {id:'admissible_twin',label:'Survey.PrimeBridges.admissible_twin',role:'Admissibility of the shifts {0, 2}',tag:'compiled',status:'Kernel-checked',stmt:'BGP212.Gap.AdmissibleZ ({0, 2} : Finset ℤ)',source:'SurveyBridges/AdmissibleTwin.lean',hash:'8a89082d81ee646c62a6118392fa645e67ec40e0c1c321e66ba3f3b59d1ab5c8',evidence:'EV-0003',deps:'BGP212.Gap.AdmissibleZ · prime divisibility',note:'Residue 1 is omitted by the two shifts modulo every prime. This statement is independent of the twin-prime conjecture.'},
-      {id:'twin_prime_equiv',label:'Survey.PrimeBridges.twin_primes_iff_h1Le_two',role:'Equivalence of twin-prime formulations',tag:'compiled',status:'Kernel-checked',stmt:'InfinitelyManyTwinPrimes ↔ BGP212.Gap.H1Le 2',source:'SurveyBridges/TwinPrimeEquiv.lean',hash:'4c269741a5de637d43d26a015aedbb0f2f892db2085095c60c6163f9e0cf72e9',evidence:'EV-0004',deps:'BGP212.Gap.primeGap · Nat.nth · Nat.count · parity of primes',note:'Proves equivalence, not the truth of either conjectural formulation.'},
-      {id:'twin_prime_186',label:'Survey.PrimeBridges.twin_primes_implies_h1Le_186',role:'Conditional bound from twin primes',tag:'compiled',status:'Kernel-checked',stmt:'InfinitelyManyTwinPrimes → BGP212.Gap.H1Le 186',source:'SurveyBridges/TwinPrimeTo186.lean',hash:'808cbc0282e497710f843ce9ec75e8a6b26dab5a89c17dce5f50d9512f7f3617',evidence:'EV-0005',deps:'twin_primes_iff_h1Le_two · h1Le_mono · 2 ≤ 186',note:'The implication is proved without assuming twin primes exist.'}
+      {id:'h1Le_mono',label:'Survey.PrimeBridges.h1Le_mono',role:'Monotonicity of bounded prime gaps',tag:'nonisolated',status:'Comparator · macOS',stmt:'∀ {D₁ D₂ : ℕ}, D₁ ≤ D₂ → BGP212.Gap.H1Le D₁ → BGP212.Gap.H1Le D₂',source:'SurveyBridges/H1LeMono.lean',hash:'3be3ce313a06fcbb4438ff43bae0afeb42f7a737c7761f9e5c78f60e1dca4ded',evidence:'EV-0002, EV-0003, EV-0006',deps:'BGP212.Gap.H1Le · Filter.frequently_atTop',note:'Comparator accepted on macOS. Runner: non-isolating. Linux landrun reproduction is the next verification step.'},
+      {id:'admissible_twin',label:'Survey.PrimeBridges.admissible_twin',role:'Admissibility of the shifts {0, 2}',tag:'compiled',status:'Kernel-checked',stmt:'BGP212.Gap.AdmissibleZ ({0, 2} : Finset ℤ)',source:'SurveyBridges/AdmissibleTwin.lean',hash:'8a89082d81ee646c62a6118392fa645e67ec40e0c1c321e66ba3f3b59d1ab5c8',evidence:'EV-0003',deps:'BGP212.Gap.AdmissibleZ · prime divisibility',note:'Residue 1 is omitted by the two shifts modulo every prime.'},
+      {id:'twin_prime_equiv',label:'Survey.PrimeBridges.twin_primes_iff_h1Le_two',role:'Equivalence of twin-prime formulations',tag:'compiled',status:'Kernel-checked',stmt:'InfinitelyManyTwinPrimes ↔ BGP212.Gap.H1Le 2',source:'SurveyBridges/TwinPrimeEquiv.lean',hash:'4c269741a5de637d43d26a015aedbb0f2f892db2085095c60c6163f9e0cf72e9',evidence:'EV-0004',deps:'BGP212.Gap.primeGap · Nat.nth · Nat.count · parity of primes',note:'Both implications are kernel-checked.'},
+      {id:'twin_prime_186',label:'Survey.PrimeBridges.twin_primes_implies_h1Le_186',role:'Conditional bound from twin primes',tag:'compiled',status:'Kernel-checked',stmt:'InfinitelyManyTwinPrimes → BGP212.Gap.H1Le 186',source:'SurveyBridges/TwinPrimeTo186.lean',hash:'808cbc0282e497710f843ce9ec75e8a6b26dab5a89c17dce5f50d9512f7f3617',evidence:'EV-0005',deps:'twin_primes_iff_h1Le_two · h1Le_mono · 2 ≤ 186',note:'Proof by composition of the equivalence with H1Le monotonicity.'}
     ];
     const tbody=document.getElementById('declaration-rows');
     const input=document.getElementById('query');
@@ -102,7 +102,7 @@
     function el(tag,cls,value){const n=document.createElement(tag);if(cls)n.className=cls;if(value!==undefined)n.textContent=value;return n}
     function render(){
       tbody.replaceChildren();const q=input.value.trim().toLowerCase();const matching=declarations.filter(d=>(selectedFilter==='all'||d.tag===selectedFilter||(selectedFilter==='compiled'&&d.tag==='nonisolated'))&&Object.values(d).join(' ').toLowerCase().includes(q));
-      if(!matching.length){let row=el('tr');let cell=el('td','empty','No matching declarations.');cell.colSpan=4;row.append(cell);tbody.append(row);return}
+      if(!matching.length){let row=el('tr');let cell=el('td','empty','0 matching declarations.');cell.colSpan=4;row.append(cell);tbody.append(row);return}
       for(const d of matching){
         let row=el('tr');let name=el('td');name.append(el('code','symbol',d.label));let r=el('td');r.append(el('span','symbol',d.role));let ev=el('td');ev.append(el('span','pill '+d.tag,d.status));let detail=el('td');let button=el('button','detail-button','View statement +');button.type='button';button.setAttribute('aria-expanded','false');button.setAttribute('aria-controls','detail-'+d.id);detail.append(button);row.append(name,r,ev,detail);tbody.append(row);
         const expansion=el('tr','expansion');expansion.id='detail-'+d.id;let container=el('td');container.colSpan=4;const layout=el('div','layout');const main=el('div');main.append(el('h4','','Exact Lean statement'),el('pre','',d.stmt),el('h4','','Dependencies'));main.lastChild.style.marginTop='19px';main.append(el('div','fact',d.deps));const sidebar=el('div');sidebar.append(el('h4','','Source'));let f=el('div','fact');f.append(el('code','',d.source));sidebar.append(f,el('h4','','SHA-256'));f=el('div','fact');f.append(el('code','',d.hash));sidebar.append(f,el('h4','','Evidence'));sidebar.append(el('div','fact',d.evidence),el('h4','','Scope'));sidebar.append(el('div','fact',d.note));layout.append(main,sidebar);container.append(layout);expansion.append(container);tbody.append(expansion);
