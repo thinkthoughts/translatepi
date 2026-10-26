@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Lean 4 mathematical declarations, dependencies, kernel checks, Comparator evidence, and reproducibility records.">
+  <title>Lean 4 · translatepi.ai</title>
+  <style>
+    :root{--bg:#0a0e13;--surface:#101820;--surface2:#14202a;--line:#283844;--text:#e0e9ed;--muted:#97aab5;--faint:#647d88;--accent:#8fe0c5;--blue:#9dbcf4;--amber:#eac58d;--max:1190px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}button,input{font:inherit}button{cursor:pointer}code,pre,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}code{overflow-wrap:anywhere}::selection{background:#42695f}
+    .wrap{width:min(calc(100% - 48px),var(--max));margin:auto}.mast{border-bottom:1px solid var(--line);background:#0c1218}.mast-inner{display:flex;align-items:center;justify-content:space-between;min-height:74px;gap:24px}
+    .brand{font-size:17px;letter-spacing:-.025em;color:var(--text);font-weight:750}.brand span{color:var(--accent)}.mast nav{display:flex;align-items:center;flex-wrap:wrap;gap:22px}.mast nav a{font-size:13px;color:var(--muted)}.mast nav a:hover{color:var(--text)}
+    .hero{padding:65px 0 43px;border-bottom:1px solid var(--line);background:radial-gradient(ellipse at 88% -20%,#17352f 0,transparent 48%),linear-gradient(#0c141a,#0a0e13)}
+    .eyebrow{color:var(--accent);font:650 11px/1.4 ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase}.hero h1{margin:14px 0 12px;max-width:850px;font-weight:680;font-size:clamp(35px,5.3vw,66px);line-height:1.13;letter-spacing:-.053em}.hero p{max-width:710px;font-size:17px;color:var(--muted);margin:0}
+    .hero-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.action{padding:9px 14px;border:1px solid #46645e;border-radius:6px;color:var(--accent);font-weight:620;font-size:13px}.action.secondary{color:var(--text);border-color:var(--line)}.action:hover{background:var(--surface2);text-decoration:none}
+    .metadata{margin-top:37px;display:flex;gap:25px;flex-wrap:wrap}.meta{min-width:145px}.meta small{display:block;font:11px/1.4 ui-monospace,monospace;color:var(--faint);text-transform:uppercase;letter-spacing:.08em}.meta strong{display:block;margin-top:4px;font-size:14px;font-weight:550}
+    section{padding:46px 0;border-bottom:1px solid var(--line)}.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:18px;margin-bottom:21px}.section-head h2{margin:0;font-size:24px;letter-spacing:-.035em;font-weight:650}.section-head .section-aside{color:var(--faint);font-size:12px;font-family:ui-monospace,monospace}
+    .notice{border-left:3px solid var(--amber);background:#211c17;padding:13px 17px;color:#ddcbb6;margin-bottom:26px;font-size:13px}.notice strong{color:#f4d6a5}
+    .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.stat{border:1px solid var(--line);border-radius:8px;padding:21px;background:var(--surface)}.stat .num{font-size:36px;line-height:1.15;font-weight:670;letter-spacing:-.06em}.stat .label{margin-top:8px;color:var(--muted);font-size:12px}.stat .detail{font-size:11px;color:var(--faint);margin-top:8px}
+    .toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:15px}.search{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:10px 13px;min-width:245px;flex:1;color:var(--text);outline-offset:3px}.filters{display:flex;gap:6px;flex-wrap:wrap}.filter{background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:9px 12px;font-size:12px}.filter[aria-pressed="true"]{background:#19352d;border-color:#45796b;color:var(--accent)}
+    .table-wrap{border:1px solid var(--line);border-radius:8px;overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:720px}thead{background:#14202a}th{text-align:left;color:var(--faint);font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:650}td,th{padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top}tbody tr:last-child td{border-bottom:0}tbody tr{background:#0e151c}tbody tr:hover{background:#14202a}.symbol{display:block;color:var(--text);font-size:13px}.sub{display:block;color:var(--faint);font-size:11px;margin-top:3px}.pill{display:inline-block;padding:3px 7px;border-radius:4px;font:11px/1.4 ui-monospace,monospace;white-space:nowrap}.pill.compiled{color:var(--accent);background:#1a3930}.pill.nonisolated{color:#e8cba1;background:#382d20}.pill.reference{color:var(--muted);background:#253039}.pill.verified{color:#c5d5ff;background:#27365b}
+    .detail-button{padding:3px 0;border:0;background:none;color:var(--blue);font-size:12px}.expansion{display:none;background:#0b1117!important}.expansion.visible{display:table-row}.expansion td{padding:17px 20px 21px}.expansion .layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(220px,1fr);gap:24px}.expansion h4{margin:0 0 7px;font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--faint)}pre{border:1px solid var(--line);background:#070c11;color:#bfe0d7;padding:15px;overflow:auto;margin:0;white-space:pre-wrap;font-size:12px;line-height:1.7}.fact{font-size:12px;color:var(--muted);margin-bottom:12px}.fact code{color:var(--text)}
+    .dependency{border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:28px}.chain{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}.node{border:1px solid #3b5654;background:#152a2a;border-radius:7px;padding:17px 22px;text-align:center;min-width:170px;font-family:ui-monospace,monospace;font-size:14px}.node span{display:block;margin-top:6px;font-family:ui-sans-serif,sans-serif;font-size:11px;color:var(--muted)}.arrow{color:var(--accent);font-size:24px}.dep-note{color:var(--muted);font-size:12px;text-align:center;margin:20px 0 0}
+    .timeline{border-left:1px solid var(--line);margin-left:7px}.event{position:relative;padding:0 0 25px 25px}.event:last-child{padding-bottom:0}.event:before{content:"";position:absolute;left:-5px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--accent)}.event time{font:11px ui-monospace,monospace;color:var(--faint)}.event h3{font-size:14px;margin:4px 0 5px}.event p{font-size:13px;color:var(--muted);max-width:810px;margin:0}
+    .sources{display:grid;grid-template-columns:1fr 1fr;gap:14px}.source{border:1px solid var(--line);border-radius:7px;background:var(--surface);padding:19px}.source h3{font-size:14px;margin:0 0 7px}.source p{font-size:12px;color:var(--muted);margin:0}.source code{color:var(--accent)}
+    footer{padding:34px 0 58px;color:var(--faint);font-size:12px}.footer-inner{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.footer-inner a{color:var(--muted)}.empty{padding:22px;color:var(--muted);font-size:13px}
+    @media(max-width:780px){.mast-inner{align-items:flex-start;padding:18px 0;flex-direction:column;gap:12px}.mast nav{gap:14px}.hero{padding:45px 0 30px}.stats{grid-template-columns:repeat(2,1fr)}.sources,.expansion .layout{grid-template-columns:1fr}.section-head{align-items:flex-start;flex-direction:column;gap:4px}.chain{flex-direction:column}.arrow{transform:rotate(90deg)}.wrap{width:min(calc(100% - 30px),var(--max))}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+  <header class="mast"><div class="wrap mast-inner">
+    <a class="brand" href="https://translatepi.ai">translate<span>pi</span>.ai <span style="color:var(--faint);font-weight:400">/ lean4</span></a>
+    <nav aria-label="On this page"><a href="#declarations">Declarations</a><a href="#dependencies">Dependencies</a><a href="#record">Verification log</a><a href="#sources">Sources</a></nav>
+  </div></header>
+
+  <main>
+    <div class="hero"><div class="wrap">
+      <div class="eyebrow">Mathematical development / Lean 4</div>
+      <h1>Declarations, proofs,<br>verification records.</h1>
+      <p>Exact mathematical statements, typed dependencies, kernel checks, Comparator acceptance, and outstanding proof obligations. Each result retains its stated hypotheses.</p>
+      <div class="hero-links"><a class="action" href="#declarations">Browse declarations ↓</a><a class="action secondary" href="https://github.com/thinkthoughts/awards/tree/survey/prime-bridges/survey" target="_blank" rel="noopener">Source registry ↗</a><a class="action secondary" href="https://translatepi.ai/main.pdf">Exact integration paper ↗</a></div>
+      <div class="metadata"><div class="meta"><small>Lean toolchain</small><strong>4.34.0-rc2</strong></div><div class="meta"><small>Mathlib pin</small><strong><code>85e3a25</code></strong></div><div class="meta"><small>BGP212 source</small><strong><code>89b43fa</code></strong></div><div class="meta"><small>Evidence snapshot</small><strong>October 2026 · EV-0006</strong></div></div>
+    </div></div>
+
+    <section id="summary"><div class="wrap">
+      <div class="section-head"><h2>Verification snapshot</h2><div class="section-aside">Registry snapshot · manually reviewed</div></div>
+      <div class="notice"><strong>Scope:</strong> The theorem <code>InfinitelyManyTwinPrimes ↔ H1Le 2</code> establishes an equivalence of statements. It supplies no proof that infinitely many twin primes exist. Kernel checks and non-isolated Comparator runs are recorded separately from Linux-isolated acceptance.</div>
+      <div class="stats">
+        <div class="stat"><div class="num">6</div><div class="label">Compiled dependency lifts</div><div class="detail">Kernel-checked or compiled upstream</div></div>
+        <div class="stat"><div class="num">1</div><div class="label">Comparator accepted</div><div class="detail">Non-isolating macOS execution</div></div>
+        <div class="stat"><div class="num">0</div><div class="label">Isolated Comparator verified</div><div class="detail">Linux reproduction pending</div></div>
+        <div class="stat"><div class="num">26</div><div class="label">Survey tests passing</div><div class="detail">Python tests · reported at EV-0006</div></div>
+      </div>
+    </div></section>
+
+    <section id="declarations"><div class="wrap">
+      <div class="section-head"><h2>Lean declarations</h2><div class="section-aside">Select a row for its exact statement and evidence</div></div>
+      <div class="toolbar"><input id="query" class="search" type="search" placeholder="Search declarations, predicates, dependencies…" aria-label="Search declarations"><div class="filters" role="group" aria-label="Filter declarations"><button type="button" class="filter" data-filter="all" aria-pressed="true">All</button><button type="button" class="filter" data-filter="compiled" aria-pressed="false">Kernel-checked</button><button type="button" class="filter" data-filter="nonisolated" aria-pressed="false">Comparator</button></div></div>
+      <div class="table-wrap"><table><thead><tr><th>Declaration</th><th>Statement / role</th><th>Evidence</th><th>Detail</th></tr></thead><tbody id="declaration-rows"></tbody></table></div>
+    </div></section>
+
+    <section id="dependencies"><div class="wrap">
+      <div class="section-head"><h2>Proved dependencies</h2><div class="section-aside">PiπΠ · conditional arrows retain their premises</div></div>
+      <div class="dependency"><div class="chain"><div class="node">TwinPrimes<span>InfinitelyManyTwinPrimes</span></div><div class="arrow" aria-label="if and only if">⇔</div><div class="node">H₁ ≤ 2<span>twin_primes_iff_h1Le_two</span></div><div class="arrow" aria-label="implies">⇒</div><div class="node">H₁ ≤ 186<span>h1Le_mono</span></div></div><p class="dep-note">The equivalence and implication are kernel-checked. Neither arrow supplies an unconditional proof of its premise.</p></div>
+    </div></section>
+
+    <section id="record"><div class="wrap">
+      <div class="section-head"><h2>Verification log</h2><div class="section-aside">Evidence records · newest first</div></div>
+      <div class="timeline">
+        <article class="event"><time>EV-0006 · macOS arm64</time><h3><code>h1Le_mono</code> — Comparator accepted, non-isolating</h3><p>Comparator <code>19e111e</code>, lean4export <code>cacf989</code>. Output: “Your solution is okay!” Linux-isolated reproduction remains open. <a href="https://github.com/thinkthoughts/awards/tree/survey/prime-bridges/survey/evidence/comparator">Recorded output ↗</a></p></article>
+        <article class="event"><time>EV-0005 · Lean 4.34.0-rc2</time><h3><code>twin_primes_implies_h1Le_186</code> — kernel-checked</h3><p>Source hash <code>808cbc02…3617</code>. Only <code>propext</code>, <code>Classical.choice</code>, and <code>Quot.sound</code> reported.</p></article>
+        <article class="event"><time>EV-0004 · Lean 4.34.0-rc2</time><h3><code>twin_primes_iff_h1Le_two</code> — kernel-checked</h3><p>Source hash <code>4c269741…72e9</code>. Both directions audited; Comparator pending.</p></article>
+        <article class="event"><time>EV-0003 · Lean 4.34.0-rc2</time><h3><code>admissible_twin</code> and <code>h1Le_mono</code> — kernel-checked</h3><p>Source hashes <code>8a89082d…5c8</code> and <code>3be3ce31…4ded</code>. Comparator isolation remains separately tracked.</p></article>
+      </div>
+    </div></section>
+
+    <section id="sources"><div class="wrap">
+      <div class="section-head"><h2>Sources and reproducibility</h2><div class="section-aside">Pinned where evidence requires it</div></div>
+      <div class="sources">
+        <div class="source"><h3>Lean 4 survey bridges</h3><p>Declarations, typed relationships, proof obligations, hashes and evidence records. <a href="https://github.com/thinkthoughts/awards/tree/survey/prime-bridges/survey" target="_blank" rel="noopener">Browse source ↗</a></p></div>
+        <div class="source"><h3>Prime-gap definitions</h3><p><code>BGP212.Gap.AdmissibleZ</code>, <code>DHL</code>, <code>primeGap</code>, <code>H1Le</code>. <a href="https://github.com/thinkthoughts/lean-bgp212" target="_blank" rel="noopener">BGP212 repository ↗</a></p></div>
+        <div class="source"><h3>Comparator procedure</h3><p>Challenge/Solution exports, axiom whitelist and the isolation distinction. <a href="https://github.com/thinkthoughts/awards/blob/survey/prime-bridges/survey/docs/COMPARATOR_RUNS.md" target="_blank" rel="noopener">Reproduction instructions ↗</a></p></div>
+        <div class="source"><h3>Exact rational integration</h3><p>Constrained simplex supports, rational polynomial spaces, exact moments and certificate composition. <a href="https://translatepi.ai/main.pdf">Read the paper ↗</a></p></div>
+      </div>
+    </div></section>
+  </main>
+  <footer><div class="wrap footer-inner"><span>translatepi.ai / lean4 · mathematical statements and evidence</span><span>Specification ≠ verification · <a href="https://translatepi.ai">translatepi.ai</a></span></div></footer>
+  <script>
+    // Initial publication snapshot. Replace this array from the versioned registry during deployment.
+    const declarations = [
+      {id:'h1Le_mono',label:'Survey.PrimeBridges.h1Le_mono',role:'Monotonicity of bounded prime gaps',tag:'nonisolated',status:'Comparator · non-isolated',stmt:'∀ {D₁ D₂ : ℕ}, D₁ ≤ D₂ → BGP212.Gap.H1Le D₁ → BGP212.Gap.H1Le D₂',source:'SurveyBridges/H1LeMono.lean',hash:'3be3ce313a06fcbb4438ff43bae0afeb42f7a737c7761f9e5c78f60e1dca4ded',evidence:'EV-0002, EV-0003, EV-0006',deps:'BGP212.Gap.H1Le · Filter.frequently_atTop',note:'Comparator accepted on macOS with a non-isolating runner. Linux landrun acceptance pending.'},
+      {id:'admissible_twin',label:'Survey.PrimeBridges.admissible_twin',role:'Admissibility of the shifts {0, 2}',tag:'compiled',status:'Kernel-checked',stmt:'BGP212.Gap.AdmissibleZ ({0, 2} : Finset ℤ)',source:'SurveyBridges/AdmissibleTwin.lean',hash:'8a89082d81ee646c62a6118392fa645e67ec40e0c1c321e66ba3f3b59d1ab5c8',evidence:'EV-0003',deps:'BGP212.Gap.AdmissibleZ · prime divisibility',note:'Residue 1 is omitted by the two shifts modulo every prime. This statement is independent of the twin-prime conjecture.'},
+      {id:'twin_prime_equiv',label:'Survey.PrimeBridges.twin_primes_iff_h1Le_two',role:'Equivalence of twin-prime formulations',tag:'compiled',status:'Kernel-checked',stmt:'InfinitelyManyTwinPrimes ↔ BGP212.Gap.H1Le 2',source:'SurveyBridges/TwinPrimeEquiv.lean',hash:'4c269741a5de637d43d26a015aedbb0f2f892db2085095c60c6163f9e0cf72e9',evidence:'EV-0004',deps:'BGP212.Gap.primeGap · Nat.nth · Nat.count · parity of primes',note:'Proves equivalence, not the truth of either conjectural formulation.'},
+      {id:'twin_prime_186',label:'Survey.PrimeBridges.twin_primes_implies_h1Le_186',role:'Conditional bound from twin primes',tag:'compiled',status:'Kernel-checked',stmt:'InfinitelyManyTwinPrimes → BGP212.Gap.H1Le 186',source:'SurveyBridges/TwinPrimeTo186.lean',hash:'808cbc0282e497710f843ce9ec75e8a6b26dab5a89c17dce5f50d9512f7f3617',evidence:'EV-0005',deps:'twin_primes_iff_h1Le_two · h1Le_mono · 2 ≤ 186',note:'The implication is proved without assuming twin primes exist.'}
+    ];
+    const tbody=document.getElementById('declaration-rows');
+    const input=document.getElementById('query');
+    let selectedFilter='all';
+    function el(tag,cls,value){const n=document.createElement(tag);if(cls)n.className=cls;if(value!==undefined)n.textContent=value;return n}
+    function render(){
+      tbody.replaceChildren();const q=input.value.trim().toLowerCase();const matching=declarations.filter(d=>(selectedFilter==='all'||d.tag===selectedFilter||(selectedFilter==='compiled'&&d.tag==='nonisolated'))&&Object.values(d).join(' ').toLowerCase().includes(q));
+      if(!matching.length){let row=el('tr');let cell=el('td','empty','No matching declarations.');cell.colSpan=4;row.append(cell);tbody.append(row);return}
+      for(const d of matching){
+        let row=el('tr');let name=el('td');name.append(el('code','symbol',d.label));let r=el('td');r.append(el('span','symbol',d.role));let ev=el('td');ev.append(el('span','pill '+d.tag,d.status));let detail=el('td');let button=el('button','detail-button','View statement +');button.type='button';button.setAttribute('aria-expanded','false');button.setAttribute('aria-controls','detail-'+d.id);detail.append(button);row.append(name,r,ev,detail);tbody.append(row);
+        const expansion=el('tr','expansion');expansion.id='detail-'+d.id;let container=el('td');container.colSpan=4;const layout=el('div','layout');const main=el('div');main.append(el('h4','','Exact Lean statement'),el('pre','',d.stmt),el('h4','','Dependencies'));main.lastChild.style.marginTop='19px';main.append(el('div','fact',d.deps));const sidebar=el('div');sidebar.append(el('h4','','Source'));let f=el('div','fact');f.append(el('code','',d.source));sidebar.append(f,el('h4','','SHA-256'));f=el('div','fact');f.append(el('code','',d.hash));sidebar.append(f,el('h4','','Evidence'));sidebar.append(el('div','fact',d.evidence),el('h4','','Scope'));sidebar.append(el('div','fact',d.note));layout.append(main,sidebar);container.append(layout);expansion.append(container);tbody.append(expansion);
+        button.addEventListener('click',()=>{const opened=expansion.classList.toggle('visible');button.setAttribute('aria-expanded',String(opened));button.textContent=opened?'Hide statement −':'View statement +'});
+      }
+    }
+    input.addEventListener('input',render);document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{selectedFilter=b.dataset.filter;document.querySelectorAll('.filter').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render()}));render();
+  </script>
+</body>
+</html>
