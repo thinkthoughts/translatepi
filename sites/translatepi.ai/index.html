@@ -1,110 +1,840 @@
 <!DOCTYPE html>
-
 <html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="#090a0d" name="theme-color"/>
-<meta content="Exact Rational Integration over Constrained Simplices, draft v1.2: verified direct marked-profile transitions through V2n, 52 of 52 factor multisets in a specified Table 3 block, and 19-statement Linux Lean Comparator acceptance. Full Gram matrices and variational positivity remain open." name="description"/>
-<title>Exact Rational Integration over Constrained Simplices · translatepi.ai</title>
-<link href="assets/reading-point-badge.svg" rel="icon" type="image/svg+xml"/>
-<style>
-    :root{color-scheme:dark;--bg:#090a0d;--panel:#111318;--panel2:#15171d;--line:#2c3039;--ink:#f3f3f4;--muted:#adb2bd;--pink:#dc468b;--lightpink:#ff99c8;--green:#a5dbc4;--amber:#ead09c}
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="#090a0d" name="theme-color"/>
+  <meta content="Exact Rational Integration over Constrained Simplices, draft v1.3: Lean-verified V2o binomial read summaries, 157 certified factor-multiset profiles at one Table 3 piece, independent macOS/Linux builds and Linux default-kernel Comparator acceptance. Rational moments and full Gram matrices remain open." name="description"/>
+  <title>
+   Exact Rational Integration over Constrained Simplices &middot; translatepi.ai
+  </title>
+  <link href="assets/reading-point-badge.svg" rel="icon" type="image/svg+xml"/>
+  <style>
+   :root{color-scheme:dark;--bg:#090a0d;--panel:#111318;--panel2:#15171d;--line:#2c3039;--ink:#f3f3f4;--muted:#adb2bd;--pink:#dc468b;--lightpink:#ff99c8;--green:#a5dbc4;--amber:#ead09c}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:var(--lightpink)}a:hover{text-decoration-color:var(--pink)}.wrap{max-width:1060px;margin:auto;padding:0 26px}.header{border-bottom:1px solid var(--line)}.top{display:flex;justify-content:space-between;align-items:center;gap:22px;min-height:112px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}.brand img{width:65px;height:65px}.brand strong{display:block;font-size:1.22rem;letter-spacing:-.025em}.brand small{display:block;color:var(--muted);font-size:.83rem}.nav{display:flex;gap:22px;flex-wrap:wrap}.nav a{text-decoration:none;color:var(--muted);font-size:.9rem}.nav a:hover{color:var(--ink)}.hero{padding:88px 0 75px;max-width:840px}.eyebrow{color:var(--lightpink);font-size:.75rem;font-weight:750;letter-spacing:.18em;text-transform:uppercase}.hero h1{font-size:clamp(2.45rem,5.5vw,4.65rem);line-height:1.08;letter-spacing:-.055em;margin:20px 0 22px;font-weight:720}.subtitle{font-size:1.15rem;color:var(--muted);max-width:690px}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}.button{display:inline-flex;text-decoration:none;background:var(--pink);color:#fff;border-radius:9px;padding:11px 17px;font-weight:650}.button.alt{background:var(--panel2);border:1px solid var(--line);color:var(--ink)}.button:hover{filter:brightness(1.12)}.quiet{color:var(--muted);font-size:.87rem;margin-top:15px}.section{border-top:1px solid var(--line);padding:56px 0}.section h2{font-size:1.65rem;letter-spacing:-.03em;margin:0 0 12px}.section p{max-width:830px;color:var(--muted)}.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:23px}.card h3{margin:0 0 8px;font-size:1.06rem}.card p{margin:4px 0 0;font-size:.95rem}.proof{display:grid;grid-template-columns:1.5fr 1fr;gap:20px;align-items:start}.formula{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;font-size:clamp(1.1rem,2vw,1.4rem);overflow-wrap:anywhere}.formula small{display:block;color:var(--muted);font-size:.8rem;margin-top:9px}.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.stage{padding:17px;background:var(--panel);border:1px solid var(--line);border-radius:12px}.stage strong{display:block;font-size:.95rem}.stage small{display:block;color:var(--muted);margin-top:6px}.status{display:inline-block;color:var(--green);font-size:.73rem;font-weight:650;margin-bottom:10px}.status.pending{color:var(--amber)}.notes{font-size:.9rem}.footer{border-top:1px solid var(--line);padding:30px 0 46px;color:var(--muted);font-size:.85rem}.footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}code{color:#f0bdd6}*:focus-visible{outline:2px solid var(--lightpink);outline-offset:4px}@media(max-width:720px){.top{align-items:flex-start;flex-direction:column;padding:18px 0}.brand img{width:53px;height:53px}.nav{gap:15px}.hero{padding:60px 0}.two,.proof,.stages{grid-template-columns:1fr}.section{padding:42px 0}}
   
 .verify-table{width:100%;border-collapse:collapse;font-size:.86rem;margin:22px 0 12px}.verify-table th,.verify-table td{padding:11px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.verify-table th{color:var(--ink);background:var(--panel)}.verify-table td{color:var(--muted)}@media(max-width:720px){.verify-table{display:block;overflow-x:auto;white-space:nowrap}}
-</style>
-</head>
-<body>
-<header class="header">
-<div class="wrap top">
-<a aria-label="translatepi.ai homepage" class="brand" href="https://translatepi.ai/">
-<img alt="Reading Point eight-point ring logo" height="65" src="assets/reading-point-logo.svg" width="65"/>
-<span><strong>translatepi.ai</strong><small>The reading point. PiπΠ.</small></span>
-</a>
-<nav aria-label="Paper navigation" class="nav">
-<a href="#gram-block">Gram block</a><a href="#mathematics">Mathematics</a><a href="#blueprint">Blueprint</a><a href="#verification">Verification</a><a href="/main.pdf">PDF ↗</a><a href="https://github.com/thinkthoughts/lean-bgp212">GitHub ↗</a>
-</nav>
-</div>
-</header>
-<main class="wrap">
-<section aria-labelledby="main-title" class="hero">
-<div class="eyebrow">Mathematics · Lean 4 · exact certificates</div>
-<h1 id="main-title">Exact Rational Integration over Constrained Simplices</h1>
-<p class="subtitle">Symmetric polynomial bases, explicit marginal geometry, and reproducible formal verification, developed through the study of bounded gaps between primes.</p>
-<div class="actions"><a class="button" href="/main.pdf">Read paper · v1.2 ↗</a><a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/paper/THEOREMS.md">Theorem inventory ↗</a><a class="button alt" href="#blueprint">Proof outline ↓</a></div>
-<p class="quiet">Draft v1.2 · 24 October 2026. V2n proves a direct marked-profile transition and certifies profiles for all 52 multisets in the specified |λ| ≤ 8 block of Table 3 piece (6,3). The Mac and Linux certificate builds passed (3,763 jobs each), and the 19-statement Linux Comparator was accepted by the Lean kernel. Exact moments and full Gram matrices remain further work.</p>
-</section>
-<section class="section" id="mathematics">
-<div class="eyebrow">01 / Mathematical objects</div><h2>From constraints to exact integrals</h2>
-<p>The development specifies constrained simplex supports and piecewise cap conditions, constructs a rational polynomial basis, and derives exact integral formulas. The results are formalized in Lean 4 with explicit theorem dependencies and independently checkable certificates.</p>
-<div class="two">
-<article class="card"><h3>The polynomial basis · V0</h3><p>The 846-dimensional <code>B₂₁</code> basis, with polynomial generators built from a slack power and power-sum factors.</p></article>
-<article class="card"><h3>Exact integration · V2c</h3><p>General monomial formulas for <i>I</i><sub>T</sub>, with arbitrary cap functions and a worked exact rational Gram entry.</p></article>
-<article class="card"><h3>Marginal-fibre geometry · V2d</h3><p>The exact piecewise fibre endpoint for <i>J</i><sub>T</sub>, empty-fibre theorems, marginal identity, and inner polynomial integral, independently verified on the VPS.</p></article><article class="card"><h3>Two-aggregate integration · V2e-A</h3><p>Weighted high-dimensional simplex integrals reduce to two aggregate variables. Rational polynomial forms and a worked certificate of 19/7680 are kernel-checked.</p></article>
-<article class="card"><h3>Polygon-cell integration · V2e-B</h3><p>Exact rational polynomial integrals over clipped two-aggregate cells, with a verified cap-branch formula and a Table 3 certificate for one specified contribution to <i>J</i><sub>T</sub>.</p></article>
-<article class="card"><h3>Exact marginal Gram entry · V2f</h3><p>All endpoint branches integrated and assembled: the constant-generator entry <i>J</i><sub>T</sub>[1,1] ≈ 1.1193487646 × 10⁻⁵⁵, certified exactly from 133 rational pieces.</p></article>
-<article class="card"><h3>Bilinear power-sum Gram entry · V2g</h3><p>The first nonconstant marginal entry <i>J</i><sub>T</sub>[P₂,1] ≈ 4.99943968764 × 10⁻⁵⁷, certified using 133 rational pieces and 266 exact lemmas. Coordinate placement and shifted power sums are formalized.</p></article>
-<article class="card"><h3>Power-sum-square Gram entry · V2h</h3><p>The diagonal entry <i>J</i><sub>T</sub>[P₂,P₂] ≈ 2.27107 × 10⁻⁵⁸ completes the 2×2 block. Two-coordinate placements, diagonal terms, and shared moment-table certificates are verified by Lean.</p></article>
-<article class="card"><h3>General marginal Gram entries · V2i</h3><p>For arbitrary generators G<sub>a,λ</sub> = (L − P₁)<sup>a</sup>P<sub>λ</sub>, Lean proves a rational marginal Gram-entry representation. The Table 3 theorem covers every generator pair in B₂₁; selected entries are evaluated with exact certificates.</p></article>
-<article class="card"><h3>Shared-moment aggregation · V2j</h3><p>Canonical moment keys collect repeated contributions across Gram-entry combinations. Lean proves the aggregation agrees exactly with V2i, with four compiled demonstrations and a 24-statement Comparator accepted independently on the MacBook Pro and Linux VPS.</p></article>
-<article class="card"><h3>Symmetric-function reduction · V2k</h3><p>A canonical augmented-monomial symmetric-function evaluator replaces V2i’s placement recursion. Lean proves general equivalence with V2i’s placement recursion and verifies exact coefficient tables, including an 85-coefficient piece demonstration. Its 36-statement Comparator suite was accepted on Mac and Linux VPS.</p></article>
-<article class="card"><h3>Staged symmetric-function certificates · V2ℓ</h3><p>Lean proves that certified step chains, chunks, and merges recover V2k’s evaluator and V2i’s placement value. Factor-order invariance permits prefix reuse; certified profiles give a 231-moment representation for the degree-12 Table 3 piece (6,3). The 35-statement Comparator passed on the Linux VPS.</p></article>
-<article class="card"><h3>Certified prefix-trie evaluation · V2m</h3><p>Lean certifies 77 nonroot prefix-trie nodes and 78 reusable moment profiles, with equality to V2i’s placement evaluation for arbitrary moment oracles. Kernel-checked degree-40 coefficient tables include one Table 3 piece (6,3); the remaining rational moments and trie nodes are future work. The 20-statement Comparator passed independently on the Linux VPS.</p></article>
-<article class="card"><h3>Direct marked-profile transitions · V2n</h3><p>Ordinary profiles alone are insufficient for continuing shifted power-sum transitions; a higher-order marked profile is sufficient, with equality tested against every function on marked keys. On Table 3 piece (6,3), Lean certifies 34 direct nodes, including 25 new factor multisets, and covers all 52 multisets in the |λ| ≤ 8 block. Two coefficient tables each use 489 moment keys. The 19-statement Comparator passed on Linux.</p></article>
-
-<article class="card"><h3>Bounded prime gaps</h3><p>Combinatorial packing and the verified conditional implication from DHL[45,2] to <i>H</i><sub>1</sub> ≤ 212; additional analytic and variational obligations remain.</p></article>
-</div>
-</section>
-<section class="section">
-<div class="eyebrow">02 / Verified mathematics</div><h2>A verified implication and its research pathway</h2>
-<div class="proof">
-<div class="formula">DHL[45,2]  ⟹  <i>H</i><sub>1</sub> ≤ 212<small>Lean-verified implication under the stated DHL[45,2] hypothesis.</small></div>
-<p class="notes">V2f–V2h certify the symmetric 2×2 marginal Gram block on {1, P₂}. V2i proves an exact rational representation for every pair of B₂₁ generators; V2j–V2m develop shared moments, symmetric-function evaluation, staged certificates, and prefix-trie reuse. V2n proves direct transitions using marked profiles, certifies 34 further direct nodes, and establishes coverage of all 52 multisets in the specified degree block at one Table 3 piece. The complete 846×846 numerical matrix, remaining rational moments, optimized polynomial, and variational positivity remain open work.</p>
-</div>
-</section>
-<section class="section" id="gram-block">
-<div class="eyebrow">03 / Exact marginal Gram block</div><h2>Three certified entries, one polynomial pair</h2>
-<p>For the functions 1 and P₂ = ∑ᵢxᵢ², the marginal bilinear form has a rational 2×2 Gram block. Decimal values below are readable approximations of the exact rational certificates.</p>
-<div aria-label="Two by two marginal Gram matrix: top-left 1.11935 times ten to the minus fifty-five, off diagonal 4.99944 times ten to the minus fifty-seven, bottom-right 2.27107 times ten to the minus fifty-eight" class="formula" role="img">
-<div style="font-size:.83rem;color:var(--muted);margin-bottom:12px">G<sub>J</sub> on (1, P₂)</div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:center;font-variant-numeric:tabular-nums;font-size:clamp(.86rem,1.65vw,1.2rem)">
-<span>1.11935 × 10<sup>−55</sup></span><span>4.99944 × 10<sup>−57</sup></span>
-<span>4.99944 × 10<sup>−57</sup></span><span>2.27107 × 10<sup>−58</sup></span>
-</div>
-<small>The numerical Cauchy–Schwarz ratio J<sub>T</sub>[P₂,1]² / (J<sub>T</sub>[1,1] · J<sub>T</sub>[P₂,P₂]) ≈ 0.984. The matrix entries are certified individually; a separate exact determinant-positivity certificate is a further target.</small>
-</div>
-<p>V2h handles diagonal and distinct-coordinate placements. V2i generalizes the placement construction to products of arbitrary power sums and certifies further Table 3 entries: J<sub>T</sub>[P₄,1] ≈ 2.75169 × 10<sup>−59</sup>, J<sub>T</sub>[P₂²,1] ≈ 2.28799 × 10<sup>−58</sup>, and J<sub>T</sub>[L−P₁,1] ≈ 5.52809 × 10<sup>−57</sup>. These approximations correspond to exact rationals in the Lean certificates.</p>
-</section>
-<section class="section" id="blueprint">
-<div class="eyebrow">04 / Proof blueprint</div><h2>Follow the mathematical dependencies</h2>
-<p>This theorem map follows the mathematical dependencies from established proofs to current research. Its next iteration will connect Lean declarations, mathematical statements, dependencies, and kernel verification logs.</p>
-<div class="stages">
-<article class="stage"><span class="status">VERIFIED</span><strong>Arithmetic and packing</strong><small>GDT/CRT, admissibility, 455 packing roots, combinatorial assembly</small></article>
-<article class="stage"><span class="status">VERIFIED</span><strong>Polynomial foundations</strong><small>B₂₁, simplex integrals, rational <i>I</i><sub>T</sub> entries</small></article>
-<article class="stage"><span class="status">VERIFIED · V2d</span><strong>Marginal fibres</strong><small>V2d: Lemma 9.2 and inner polynomial integral</small></article>
-<article class="stage"><span class="status">VERIFIED · V2e-A</span><strong>Two-aggregate Dirichlet integrals</strong><small>One- and two-group formulas, rational specializations, endpoint aggregates and cut-triangle example</small></article>
-<article class="stage"><span class="status">VERIFIED · V2e-B</span><strong>Cap-branch polygon cells</strong><small>Exact rational clipped-cell integrals; cap-branch piece and one Table 3 certificate</small></article>
-<article class="stage"><span class="status">VERIFIED · V2f</span><strong>First marginal Gram entry</strong><small>All endpoint branches, 133 exact pieces, J<sub>T</sub>[1,1] in rational form</small></article>
-<article class="stage"><span class="status">VERIFIED · V2g</span><strong>First power-sum marginal entry</strong><small>Bilinear form, coordinate placement, 266 exact certificate lemmas; J<sub>T</sub>[P₂,1]</small></article>
-<article class="stage"><span class="status">VERIFIED · V2h</span><strong>2×2 marginal Gram block</strong><small>J<sub>T</sub>[P₂,P₂], diagonal and distinct-coordinate placements, 14 resumable rational certificate rows</small></article>
-<article class="stage"><span class="status">VERIFIED · V2i</span><strong>General marginal Gram entries</strong><small>Exact rational representation for every B₂₁ generator pair; four Table 3 evaluations, 33-statement Comparator and 21/21 VPS regression</small></article>
-<article class="stage"><span class="status">VERIFIED · V2j</span><strong>Shared-moment aggregation</strong><small>Coefficients collected by canonical moment keys; core theorems and four demos built on Mac, 24-statement Comparator accepted on Mac and VPS</small></article>
-<article class="stage"><span class="status">VERIFIED · V2k</span><strong>Symmetric-function reduction</strong><small>General equivalence with V2i’s placement recursion; 85-key coefficient table; 36-statement Comparator accepted on Mac and VPS</small></article>
-<article class="stage"><span class="status">VERIFIED · V2ℓ</span><strong>Staged degree-12 certificates</strong><small>Certified chains, prefix reuse and moment profiles; 231-key Table 3 piece; 35-statement Comparator accepted on the Linux VPS</small></article>
-<article class="stage"><span class="status">VERIFIED · V2m</span><strong>Prefix-trie certificates</strong><small>77 certified nonroot nodes, 78 profiles and selected degree-40 coefficient tables; 20-statement Comparator accepted on Linux VPS</small></article>
-<article class="stage"><span class="status">VERIFIED · V2n</span><strong>Marked-profile transitions</strong><small>General direct transition theorem; 34 direct nodes, all 52 multisets in the |λ| ≤ 8 block of Table 3 piece (6,3); 19-statement Linux Comparator acceptance</small></article>
-<article class="stage"><span class="status pending">IN PROGRESS · V2o</span><strong>Minimal one-factor summaries</strong><small>Explore what degree-bounded factors read; V2o results await independent verification</small></article><article class="stage"><span class="status pending">OPEN</span><strong>Complete coefficient coverage</strong><small>Certify the remaining 2,258 factor multisets at piece (6,3), then extend to other pieces</small></article><article class="stage"><span class="status pending">OPEN</span><strong>Exact moment evaluation</strong><small>Evaluate and verify the required rational moments for the coefficient tables</small></article><article class="stage"><span class="status pending">OPEN</span><strong>Full Gram matrices and optimization</strong><small>Assemble the 846×846 matrices and determine optimized polynomial P⋆</small></article><article class="stage"><span class="status pending">NEXT TARGET</span><strong>Positivity certificate</strong><small>Optimized coefficients and exact inequalities</small></article>
-<article class="stage"><span class="status">VERIFIED CONDITIONALLY</span><strong>Final implication</strong><small>DHL[45,2] → <i>H</i><sub>1</sub> ≤ 212, given its stated hypothesis</small></article>
-</div>
-</section>
-<section class="section" id="verification">
-<div class="eyebrow">05 / Reproducibility</div><h2>Readable mathematics, checkable evidence</h2>
-<p>Reproducible Challenge/Solution pairs, pinned dependencies, generators and per-release result YAML files document the proof chain. Comparator acceptances below are independent checks of the named statements; Mac results marked “Build only” do not imply a Mac Comparator pass.</p><table aria-label="Verification results by release" class="verify-table"><thead><tr><th scope="col">Release</th><th scope="col">Statements</th><th scope="col">Mac</th><th scope="col">Linux VPS</th><th scope="col">Record</th></tr></thead><tbody><tr><td>V2i</td><td>33</td><td>Comparator passed</td><td>Comparator passed</td><td><a href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/results/V2i_gen_entry.yaml">YAML</a></td></tr><tr><td>V2j</td><td>24</td><td>Comparator passed*</td><td>Comparator passed</td><td><a href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/results/V2j_moment_agg.yaml">YAML</a></td></tr><tr><td>V2k</td><td>36</td><td>Comparator passed*</td><td>Comparator passed</td><td><a href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/results/V2k_sym_reduce.yaml">YAML</a></td></tr><tr><td>V2ℓ</td><td>35</td><td>Build passed; Comparator unconfirmed</td><td>Comparator passed</td><td><a href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/results/V2l_sym_staged.yaml">YAML</a></td></tr><tr><td>V2m</td><td>20</td><td>Build passed; Comparator unconfirmed</td><td>Comparator passed</td><td><a href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/results/V2m_sym_trie.yaml">YAML</a></td></tr><tr><td>V2n</td><td>19</td><td>Build passed; Comparator unconfirmed</td><td>Comparator passed</td><td><a href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/results/V2n_sym_profile.yaml">YAML</a></td></tr></tbody></table><p class="notes">* Mac Comparator used a non-isolating development substitute for Linux landrun. V2n proof commit 335fd08, published merge 2b172ff; its two sequential builds completed 3,763 jobs each. Linux Comparator with real landrun reported “Lean default kernel accepts the solution” and “Your solution is okay!”. The full numerical matrix and positivity certificate remain open.</p>
-<div class="actions"><a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/paper/main.tex">LaTeX manuscript ↗</a><a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212/tree/main/specs/results">All verification records ↗</a></div>
-<p class="notes">This independent Lean formalization builds on the mathematical argument in <a href="https://primegaps.axiommath.ai/">Axiom Math's bounded-prime-gap research</a>. The repository records our statements, proof terms, certificates, and verification provenance.</p>
-</section>
-</main>
-<footer class="footer"><div class="wrap"><span>© 2026 Reading Point · translatepi.ai</span><span>Admissible generalizations trail leading specifications. · PiπΠ</span></div></footer>
-</body>
+  </style>
+ </head>
+ <body>
+  <header class="header">
+   <div class="wrap top">
+    <a aria-label="translatepi.ai homepage" class="brand" href="https://translatepi.ai/">
+     <img alt="Reading Point eight-point ring logo" height="65" src="assets/reading-point-logo.svg" width="65"/>
+     <span>
+      <strong>
+       translatepi.ai
+      </strong>
+      <small>
+       The reading point. Pi&pi;&Pi;.
+      </small>
+     </span>
+    </a>
+    <nav aria-label="Paper navigation" class="nav">
+     <a href="#gram-block">
+      Gram block
+     </a>
+     <a href="#v2o">
+      V2o
+     </a>
+     <a href="#mathematics">
+      Mathematics
+     </a>
+     <a href="#blueprint">
+      Blueprint
+     </a>
+     <a href="#verification">
+      Verification
+     </a>
+     <a href="/main.pdf">
+      PDF &nearrow;
+     </a>
+     <a href="https://github.com/thinkthoughts/lean-bgp212">
+      GitHub &nearrow;
+     </a>
+    </nav>
+   </div>
+  </header>
+  <main class="wrap">
+   <section aria-labelledby="main-title" class="hero">
+    <div class="eyebrow">
+     Mathematics &middot; Lean 4 &middot; exact certificates
+    </div>
+    <h1 id="main-title">
+     Exact Rational Integration over Constrained Simplices
+    </h1>
+    <p class="subtitle">
+     Symmetric polynomial bases, explicit marginal geometry, and reproducible formal verification, developed through the study of bounded gaps between primes.
+    </p>
+    <div class="actions">
+     <a class="button" href="/main.pdf">
+      Read paper &middot; v1.3 &nearrow;
+     </a>
+     <a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/paper/THEOREMS.md">
+      Theorem inventory &nearrow;
+     </a>
+     <a class="button alt" href="#blueprint">
+      Proof outline &darr;
+     </a>
+    </div>
+    <p class="quiet">
+     Draft v1.3 &middot; 26 October 2026. V2o proves that the parent profile and binomial summaries &delta;₁&hellip;&delta;<sub>d</sub> suffice for a factor of degree &le; d, and that monomial-factor responses determine these summaries over characteristic-zero fields. At Table 3 piece (6,3), 157 of 2,361 factor multisets now have certified profiles. Mac and Linux certificate builds passed (3,663 jobs each), and the eight-statement V2o Comparator suite was accepted by the Linux Lean default kernel. The remaining rational moments and full Gram matrices await certification.
+    </p>
+   </section>
+   <section class="section" id="mathematics">
+    <div class="eyebrow">
+     01 / Mathematical objects
+    </div>
+    <h2>
+     From constraints to exact integrals
+    </h2>
+    <p>
+     The development specifies constrained simplex supports and piecewise cap conditions, constructs a rational polynomial basis, and derives exact integral formulas. The results are formalized in Lean 4 with explicit theorem dependencies and independently checkable certificates.
+    </p>
+    <div class="two">
+     <article class="card">
+      <h3>
+       The polynomial basis &middot; V0
+      </h3>
+      <p>
+       The 846-dimensional
+       <code>
+        B₂₁
+       </code>
+       basis, with polynomial generators built from a slack power and power-sum factors.
+      </p>
+     </article>
+     <article class="card">
+      <h3>
+       Exact integration &middot; V2c
+      </h3>
+      <p>
+       General monomial formulas for
+       <i>
+        I
+       </i>
+       <sub>
+        T
+       </sub>
+       , with arbitrary cap functions and a worked exact rational Gram entry.
+      </p>
+     </article>
+     <article class="card">
+      <h3>
+       Marginal-fibre geometry &middot; V2d
+      </h3>
+      <p>
+       The exact piecewise fibre endpoint for
+       <i>
+        J
+       </i>
+       <sub>
+        T
+       </sub>
+       , empty-fibre theorems, marginal identity, and inner polynomial integral, independently verified on the VPS.
+      </p>
+     </article>
+     <article class="card">
+      <h3>
+       Two-aggregate integration &middot; V2e-A
+      </h3>
+      <p>
+       Weighted high-dimensional simplex integrals reduce to two aggregate variables. Rational polynomial forms and a worked certificate of 19/7680 are kernel-checked.
+      </p>
+     </article>
+     <article class="card">
+      <h3>
+       Polygon-cell integration &middot; V2e-B
+      </h3>
+      <p>
+       Exact rational polynomial integrals over clipped two-aggregate cells, with a verified cap-branch formula and a Table 3 certificate for one specified contribution to
+       <i>
+        J
+       </i>
+       <sub>
+        T
+       </sub>
+       .
+      </p>
+     </article>
+     <article class="card">
+      <h3>
+       Exact marginal Gram entry &middot; V2f
+      </h3>
+      <p>
+       All endpoint branches integrated and assembled: the constant-generator entry
+       <i>
+        J
+       </i>
+       <sub>
+        T
+       </sub>
+       [1,1] &asymp; 1.1193487646 &times; 10⁻⁵⁵, certified exactly from 133 rational pieces.
+      </p>
+     </article>
+     <article class="card">
+      <h3>
+       Bilinear power-sum Gram entry &middot; V2g
+      </h3>
+      <p>
+       The first nonconstant marginal entry
+       <i>
+        J
+       </i>
+       <sub>
+        T
+       </sub>
+       [P₂,1] &asymp; 4.99943968764 &times; 10⁻⁵⁷, certified using 133 rational pieces and 266 exact lemmas. Coordinate placement and shifted power sums are formalized.
+      </p>
+     </article>
+     <article class="card">
+      <h3>
+       Power-sum-square Gram entry &middot; V2h
+      </h3>
+      <p>
+       The diagonal entry
+       <i>
+        J
+       </i>
+       <sub>
+        T
+       </sub>
+       [P₂,P₂] &asymp; 2.27107 &times; 10⁻⁵⁸ completes the 2&times;2 block. Two-coordinate placements, diagonal terms, and shared moment-table certificates are verified by Lean.
+      </p>
+     </article>
+     <article class="card">
+      <h3>
+       General marginal Gram entries &middot; V2i
+      </h3>
+      <p>
+       For arbitrary generators G
+       <sub>
+        a,&lambda;
+       </sub>
+       = (L &minus; P₁)
+       <sup>
+        a
+       </sup>
+       P
+       <sub>
+        &lambda;
+       </sub>
+       , Lean proves a rational marginal Gram-entry representation. The Table 3 theorem covers every generator pair in B₂₁; selected entries are evaluated with exact certificates.
+      </p>
+     </article>
+     <article class="card">
+      <h3>
+       Shared-moment aggregation &middot; V2j
+      </h3>
+      <p>
+       Canonical moment keys collect repeated contributions across Gram-entry combinations. Lean proves the aggregation agrees exactly with V2i, with four compiled demonstrations and a 24-statement Comparator accepted independently on the MacBook Pro and Linux VPS.
+      </p>
+     </article>
+     <article class="card">
+      <h3>
+       Symmetric-function reduction &middot; V2k
+      </h3>
+      <p>
+       A canonical augmented-monomial symmetric-function evaluator replaces V2i&rsquo;s placement recursion. Lean proves general equivalence with V2i&rsquo;s placement recursion and verifies exact coefficient tables, including an 85-coefficient piece demonstration. Its 36-statement Comparator suite was accepted on Mac and Linux VPS.
+      </p>
+     </article>
+     <article class="card">
+      <h3>
+       Staged symmetric-function certificates &middot; V2&ell;
+      </h3>
+      <p>
+       Lean proves that certified step chains, chunks, and merges recover V2k&rsquo;s evaluator and V2i&rsquo;s placement value. Factor-order invariance permits prefix reuse; certified profiles give a 231-moment representation for the degree-12 Table 3 piece (6,3). The 35-statement Comparator passed on the Linux VPS.
+      </p>
+     </article>
+     <article class="card">
+      <h3>
+       Certified prefix-trie evaluation &middot; V2m
+      </h3>
+      <p>
+       Lean certifies 77 nonroot prefix-trie nodes and 78 reusable moment profiles, with equality to V2i&rsquo;s placement evaluation for arbitrary moment oracles. Kernel-checked degree-40 coefficient tables include one Table 3 piece (6,3); the remaining rational moments and trie nodes are future work. The 20-statement Comparator passed independently on the Linux VPS.
+      </p>
+     </article>
+     <article class="card">
+      <h3>
+       Direct marked-profile transitions &middot; V2n
+      </h3>
+      <p>
+       Ordinary profiles alone are insufficient for continuing shifted power-sum transitions; a higher-order marked profile is sufficient, with equality tested against every function on marked keys. On Table 3 piece (6,3), Lean certifies 34 direct nodes, including 25 new factor multisets, and covers all 52 multisets in the |&lambda;| &le; 8 block. Two coefficient tables each use 489 moment keys. The 19-statement Comparator passed on Linux.
+      </p>
+     </article>
+     <article class="card" id="v2o">
+      <h3>
+       What one factor reads &middot; V2o
+      </h3>
+      <p>
+       For factors of degree &le; d, Lean proves that the parent profile plus binomial summaries &delta;₁&hellip;&delta;
+       <sub>
+        d
+       </sub>
+       suffice; monomial-factor responses determine these summaries in characteristic zero. One-level certificates cover 66 three-factor multisets of degree &le; 26 at Table 3 piece (6,3), forming no canonical leaf states. Combined V2m&ndash;V2o coverage is 157 of 2,361 multisets at that piece, with a 574-key coefficient table and Linux acceptance of the eight-statement Comparator.
+      </p>
+     </article>
+     <article class="card">
+      <h3>
+       Bounded prime gaps
+      </h3>
+      <p>
+       Combinatorial packing and the verified conditional implication from DHL[45,2] to
+       <i>
+        H
+       </i>
+       <sub>
+        1
+       </sub>
+       &le; 212; additional analytic and variational obligations remain.
+      </p>
+     </article>
+    </div>
+   </section>
+   <section class="section">
+    <div class="eyebrow">
+     02 / Verified mathematics
+    </div>
+    <h2>
+     A verified implication and its research pathway
+    </h2>
+    <div class="proof">
+     <div class="formula">
+      DHL[45,2] &nbsp;&xrArr;&nbsp;
+      <i>
+       H
+      </i>
+      <sub>
+       1
+      </sub>
+      &le; 212
+      <small>
+       Lean-verified implication under the stated DHL[45,2] hypothesis.
+      </small>
+     </div>
+     <p class="notes">
+      V2f&ndash;V2h certify the symmetric 2&times;2 marginal Gram block on {1, P₂}. V2i gives exact rational representations for every B₂₁ generator pair; V2j&ndash;V2m develop shared moments, symmetric-function evaluation, staged certificates, and prefix-trie reuse. V2n certifies direct marked-profile transitions. V2o proves which binomial read summaries suffice and are determined by degree-bounded monomial responses, adding 66 one-level three-factor certificates. Together V2m&ndash;V2o certify 157 of 2,361 factor-multiset profiles at the specified Table 3 piece. Exact rational moments, the full 846&times;846 matrices, optimized polynomial P&sstarf;, and variational positivity remain outstanding.
+     </p>
+    </div>
+   </section>
+   <section class="section" id="gram-block">
+    <div class="eyebrow">
+     03 / Exact marginal Gram block
+    </div>
+    <h2>
+     Three certified entries, one polynomial pair
+    </h2>
+    <p>
+     For the functions 1 and P₂ = &sum;ᵢxᵢ&sup2;, the marginal bilinear form has a rational 2&times;2 Gram block. Decimal values below are readable approximations of the exact rational certificates.
+    </p>
+    <div aria-label="Two by two marginal Gram matrix: top-left 1.11935 times ten to the minus fifty-five, off diagonal 4.99944 times ten to the minus fifty-seven, bottom-right 2.27107 times ten to the minus fifty-eight" class="formula" role="img">
+     <div style="font-size:.83rem;color:var(--muted);margin-bottom:12px">
+      G
+      <sub>
+       J
+      </sub>
+      on (1, P₂)
+     </div>
+     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:center;font-variant-numeric:tabular-nums;font-size:clamp(.86rem,1.65vw,1.2rem)">
+      <span>
+       1.11935 &times; 10
+       <sup>
+        &minus;55
+       </sup>
+      </span>
+      <span>
+       4.99944 &times; 10
+       <sup>
+        &minus;57
+       </sup>
+      </span>
+      <span>
+       4.99944 &times; 10
+       <sup>
+        &minus;57
+       </sup>
+      </span>
+      <span>
+       2.27107 &times; 10
+       <sup>
+        &minus;58
+       </sup>
+      </span>
+     </div>
+     <small>
+      The numerical Cauchy&ndash;Schwarz ratio J
+      <sub>
+       T
+      </sub>
+      [P₂,1]&sup2; / (J
+      <sub>
+       T
+      </sub>
+      [1,1] &middot; J
+      <sub>
+       T
+      </sub>
+      [P₂,P₂]) &asymp; 0.984. The matrix entries are certified individually; a separate exact determinant-positivity certificate is a further target.
+     </small>
+    </div>
+    <p>
+     V2h handles diagonal and distinct-coordinate placements. V2i generalizes the placement construction to products of arbitrary power sums and certifies further Table 3 entries: J<sub>T</sub>[P₄,1] &asymp; 2.75169 &times; 10<sup>&minus;59</sup>, J<sub>T</sub>[P₍₂,₂₎ (= P₂&sup2;),1] &asymp; 2.28799 &times; 10<sup>&minus;58</sup>, and J<sub>T</sub>[L&minus;P₁,1] &asymp; 5.52809 &times; 10<sup>&minus;57</sup>. These approximations correspond to exact rationals in the Lean certificates.
+    </p>
+   </section>
+   <section class="section" id="blueprint">
+    <div class="eyebrow">
+     04 / Proof blueprint
+    </div>
+    <h2>
+     Follow the mathematical dependencies
+    </h2>
+    <p>
+     This theorem map follows the mathematical dependencies from established proofs to current research. Its next iteration will connect Lean declarations, mathematical statements, dependencies, and kernel verification logs.
+    </p>
+    <div class="stages">
+     <article class="stage">
+      <span class="status">
+       VERIFIED
+      </span>
+      <strong>
+       Arithmetic and packing
+      </strong>
+      <small>
+       GDT/CRT, admissibility, 455 packing roots, combinatorial assembly
+      </small>
+     </article>
+     <article class="stage">
+      <span class="status">
+       VERIFIED
+      </span>
+      <strong>
+       Polynomial foundations
+      </strong>
+      <small>
+       B₂₁, simplex integrals, rational
+       <i>
+        I
+       </i>
+       <sub>
+        T
+       </sub>
+       entries
+      </small>
+     </article>
+     <article class="stage">
+      <span class="status">
+       VERIFIED &middot; V2d
+      </span>
+      <strong>
+       Marginal fibres
+      </strong>
+      <small>
+       V2d: Lemma 9.2 and inner polynomial integral
+      </small>
+     </article>
+     <article class="stage">
+      <span class="status">
+       VERIFIED &middot; V2e-A
+      </span>
+      <strong>
+       Two-aggregate Dirichlet integrals
+      </strong>
+      <small>
+       One- and two-group formulas, rational specializations, endpoint aggregates and cut-triangle example
+      </small>
+     </article>
+     <article class="stage">
+      <span class="status">
+       VERIFIED &middot; V2e-B
+      </span>
+      <strong>
+       Cap-branch polygon cells
+      </strong>
+      <small>
+       Exact rational clipped-cell integrals; cap-branch piece and one Table 3 certificate
+      </small>
+     </article>
+     <article class="stage">
+      <span class="status">
+       VERIFIED &middot; V2f
+      </span>
+      <strong>
+       First marginal Gram entry
+      </strong>
+      <small>
+       All endpoint branches, 133 exact pieces, J
+       <sub>
+        T
+       </sub>
+       [1,1] in rational form
+      </small>
+     </article>
+     <article class="stage">
+      <span class="status">
+       VERIFIED &middot; V2g
+      </span>
+      <strong>
+       First power-sum marginal entry
+      </strong>
+      <small>
+       Bilinear form, coordinate placement, 266 exact certificate lemmas; J
+       <sub>
+        T
+       </sub>
+       [P₂,1]
+      </small>
+     </article>
+     <article class="stage">
+      <span class="status">
+       VERIFIED &middot; V2h
+      </span>
+      <strong>
+       2&times;2 marginal Gram block
+      </strong>
+      <small>
+       J
+       <sub>
+        T
+       </sub>
+       [P₂,P₂], diagonal and distinct-coordinate placements, 14 resumable rational certificate rows
+      </small>
+     </article>
+     <article class="stage">
+      <span class="status">
+       VERIFIED &middot; V2i
+      </span>
+      <strong>
+       General marginal Gram entries
+      </strong>
+      <small>
+       Exact rational representation for every B₂₁ generator pair; four Table 3 evaluations, 33-statement Comparator and 21/21 VPS regression
+      </small>
+     </article>
+     <article class="stage">
+      <span class="status">
+       VERIFIED &middot; V2j
+      </span>
+      <strong>
+       Shared-moment aggregation
+      </strong>
+      <small>
+       Coefficients collected by canonical moment keys; core theorems and four demos built on Mac, 24-statement Comparator accepted on Mac and VPS
+      </small>
+     </article>
+     <article class="stage">
+      <span class="status">
+       VERIFIED &middot; V2k
+      </span>
+      <strong>
+       Symmetric-function reduction
+      </strong>
+      <small>
+       General equivalence with V2i&rsquo;s placement recursion; 85-key coefficient table; 36-statement Comparator accepted on Mac and VPS
+      </small>
+     </article>
+     <article class="stage">
+      <span class="status">
+       VERIFIED &middot; V2&ell;
+      </span>
+      <strong>
+       Staged degree-12 certificates
+      </strong>
+      <small>
+       Certified chains, prefix reuse and moment profiles; 231-key Table 3 piece; 35-statement Comparator accepted on the Linux VPS
+      </small>
+     </article>
+     <article class="stage">
+      <span class="status">
+       VERIFIED &middot; V2m
+      </span>
+      <strong>
+       Prefix-trie certificates
+      </strong>
+      <small>
+       77 certified nonroot nodes, 78 profiles and selected degree-40 coefficient tables; 20-statement Comparator accepted on Linux VPS
+      </small>
+     </article>
+     <article class="stage">
+      <span class="status">
+       VERIFIED &middot; V2n
+      </span>
+      <strong>
+       Marked-profile transitions
+      </strong>
+      <small>
+       General direct transition theorem; 34 direct nodes, all 52 multisets in the |&lambda;| &le; 8 block of Table 3 piece (6,3); 19-statement Linux Comparator acceptance
+      </small>
+     </article>
+     <article class="stage">
+      <span class="status">
+       VERIFIED &middot; V2o
+      </span>
+      <strong>
+       What one factor reads
+      </strong>
+      <small>
+       Sufficient and determined binomial summaries &delta;₁&hellip;&delta;<sub>d</sub>; 66 certified three-factor leaves, 157 of 2,361 profiles at piece (6,3); eight-statement Linux Comparator accepted
+      </small>
+     </article>
+     <article class="stage">
+      <span class="status pending">
+       NEXT TARGET
+      </span>
+      <strong>
+       Complete coefficient coverage
+      </strong>
+      <small>
+       At piece (6,3), certify the remaining 2,204 multisets (84 other three-factor and 2,120 with four or more factors), then extend to other pieces
+      </small>
+     </article>
+     <article class="stage">
+      <span class="status pending">
+       OPEN
+      </span>
+      <strong>
+       Exact moment evaluation
+      </strong>
+      <small>
+       Evaluate and verify the required rational moments for the coefficient tables
+      </small>
+     </article>
+     <article class="stage">
+      <span class="status pending">
+       OPEN
+      </span>
+      <strong>
+       Full Gram matrices and optimization
+      </strong>
+      <small>
+       Assemble the 846&times;846 matrices and determine optimized polynomial P&sstarf;
+      </small>
+     </article>
+     <article class="stage">
+      <span class="status pending">
+       OPEN
+      </span>
+      <strong>
+       Positivity certificate
+      </strong>
+      <small>
+       Optimized coefficients and exact inequalities
+      </small>
+     </article>
+     <article class="stage">
+      <span class="status">
+       VERIFIED CONDITIONALLY
+      </span>
+      <strong>
+       Final implication
+      </strong>
+      <small>
+       DHL[45,2] &rarr;
+       <i>
+        H
+       </i>
+       <sub>
+        1
+       </sub>
+       &le; 212, given its stated hypothesis
+      </small>
+     </article>
+    </div>
+   </section>
+   <section class="section" id="verification">
+    <div class="eyebrow">
+     05 / Reproducibility
+    </div>
+    <h2>
+     Readable mathematics, checkable evidence
+    </h2>
+    <p>
+     Reproducible Challenge/Solution pairs, pinned dependencies, generators and per-release result YAML files document the proof chain. Comparator acceptances below are independent checks of the named statements; Mac results marked &ldquo;Build only&rdquo; do not imply a Mac Comparator pass.
+    </p>
+    <table aria-label="Verification results by release" class="verify-table">
+     <thead>
+      <tr>
+       <th scope="col">
+        Release
+       </th>
+       <th scope="col">
+        Statements
+       </th>
+       <th scope="col">
+        Mac
+       </th>
+       <th scope="col">
+        Linux VPS
+       </th>
+       <th scope="col">
+        Record
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        V2i
+       </td>
+       <td>
+        33
+       </td>
+       <td>
+        Comparator passed
+       </td>
+       <td>
+        Comparator passed
+       </td>
+       <td>
+        <a href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/results/V2i_gen_entry.yaml">
+         YAML
+        </a>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        V2j
+       </td>
+       <td>
+        24
+       </td>
+       <td>
+        Comparator passed*
+       </td>
+       <td>
+        Comparator passed
+       </td>
+       <td>
+        <a href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/results/V2j_moment_agg.yaml">
+         YAML
+        </a>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        V2k
+       </td>
+       <td>
+        36
+       </td>
+       <td>
+        Comparator passed
+       </td>
+       <td>
+        Comparator passed
+       </td>
+       <td>
+        <a href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/results/V2k_sym_reduce.yaml">
+         YAML
+        </a>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        V2&ell;
+       </td>
+       <td>
+        35
+       </td>
+       <td>
+        Build passed; Comparator unconfirmed
+       </td>
+       <td>
+        Comparator passed
+       </td>
+       <td>
+        <a href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/results/V2l_sym_staged.yaml">
+         YAML
+        </a>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        V2m
+       </td>
+       <td>
+        20
+       </td>
+       <td>
+        Build passed; Comparator unconfirmed
+       </td>
+       <td>
+        Comparator passed
+       </td>
+       <td>
+        <a href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/results/V2m_sym_trie.yaml">
+         YAML
+        </a>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        V2n
+       </td>
+       <td>
+        19
+       </td>
+       <td>
+        Build passed; Comparator unconfirmed
+       </td>
+       <td>
+        Comparator passed
+       </td>
+       <td>
+        <a href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/results/V2n_sym_profile.yaml">
+         YAML
+        </a>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        V2o
+       </td>
+       <td>
+        8
+       </td>
+       <td>
+        Build passed; Comparator unconfirmed
+       </td>
+       <td>
+        Comparator passed
+       </td>
+       <td>
+        <a href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/results/V2o_sym_profile.yaml">
+         YAML
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <p class="notes">
+     * Mac Comparator used a non-isolating development substitute for Linux landrun where specified. For V2&ell;&ndash;V2o, &ldquo;Build passed&rdquo; denotes successful macOS certificate builds rather than macOS Comparator acceptance. Linux Comparator checks used real landrun. V2o: proof commit 89b43fa, verification record f779ea7, merge 6a51ba9; both sequential certificate builds passed (3,663 jobs), and the eight-statement suite was accepted as one Comparator run by the Linux Lean default kernel. These certificates establish coefficient representations, not evaluated rational moments or positivity.
+    </p>
+    <div class="actions">
+     <a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212/blob/main/specs/paper/main.tex">
+      LaTeX manuscript &nearrow;
+     </a>
+     <a class="button alt" href="https://github.com/thinkthoughts/lean-bgp212/tree/main/specs/results">
+      All verification records &nearrow;
+     </a>
+    </div>
+    <p class="notes">
+     This independent Lean formalization builds on the mathematical argument in
+     <a href="https://primegaps.axiommath.ai/">
+      Axiom Math's bounded-prime-gap research
+     </a>
+     . The repository records our statements, proof terms, certificates, and verification provenance.
+    </p>
+   </section>
+  </main>
+  <footer class="footer">
+   <div class="wrap">
+    <span>
+     &copy; 2026 Reading Point &middot; translatepi.ai
+    </span>
+    <span>
+     Admissible generalizations trail leading specifications. &middot; Pi&pi;&Pi;
+    </span>
+   </div>
+  </footer>
+ </body>
 </html>
