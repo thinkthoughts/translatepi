@@ -1,0 +1,52 @@
+[
+  {
+    "id": "AXIOM-CFSG-2026",
+    "slug": "axiom-cfsg",
+    "date": "2026-10-27",
+    "source": "Axiom Math",
+    "title": "Classification of finite simple groups in Lean",
+    "subtitle": "A published Lean formalization and an opportunity to audit theorem interfaces and proof dependencies.",
+    "target": "Specification target: distinguish the indexed classification statement from native classification-and-realization, and record the permitted-axiom checks.",
+    "status": "Source mapped",
+    "priority": "Watching",
+    "category": "Group theory",
+    "sources": [
+      [
+        "Repository",
+        "https://github.com/AxiomMath/CFSG"
+      ],
+      [
+        "Unbalanced Group Theorem paper",
+        "https://hexagonmath.org/2610.00575"
+      ]
+    ],
+    "survey": "WALTER-CLOSURE-001 (proposed external entry)",
+    "x_reply_url": null,
+    "notes": "The reported involution-centralizer closure counterexample offers a separate research reading point. It is not an open CFSG classification problem. An experimental Comparator extension exists locally but has not passed Lean or Comparator verification."
+  },
+  {
+    "id": "OPENAI-MATH-2026",
+    "slug": "openai-math",
+    "date": "2026-10-27",
+    "source": "OpenAI",
+    "title": "OpenAI/math: manuscripts and proof artifacts",
+    "subtitle": "A public repository of mathematical manuscripts with differing levels of formal verification.",
+    "target": "Specification target: map the exact claims, available Lean files, dependencies, and verification state for each result before proposing reusable proof work.",
+    "status": "Intake",
+    "priority": "Queued",
+    "category": "Formal mathematics",
+    "sources": [
+      [
+        "Repository",
+        "https://github.com/openai/math"
+      ],
+      [
+        "Contents",
+        "https://github.com/openai/math/blob/main/CONTENTS.md"
+      ]
+    ],
+    "survey": "External research entry (proposed)",
+    "x_reply_url": null,
+    "notes": "The repository explicitly notes that not all results have accompanying Lean formalizations. Treat manuscript results and kernel-checked theorems as distinct evidence classes."
+  }
+]
