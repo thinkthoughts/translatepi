@@ -33,7 +33,7 @@
 <body>
   <header class="mast"><div class="wrap mast-inner">
     <a class="brand" href="https://translatepi.ai">translate<span>pi</span>.ai <span style="color:var(--faint);font-weight:400">/ lean4</span></a>
-    <nav aria-label="On this page"><a href="#declarations">Declarations</a><a href="#dependencies">Dependencies</a><a href="#record">Verification log</a><a href="#sources">Sources</a></nav>
+    <nav aria-label="On this page"><a href="#declarations">Declarations</a><a href="#dependencies">Dependencies</a><a href="#record">Verification log</a><a href="#contributions">Contributions</a><a href="#sources">Sources</a></nav>
   </div></header>
 
   <main>
@@ -91,6 +91,15 @@
       </div>
     </div></section>
 
+
+    <section id="contributions"><div class="wrap">
+      <div class="section-head"><h2>Upstream infrastructure contributions</h2><div class="section-aside">Mathlib · Lean 4 · expandable technical record</div></div>
+      <p style="color:var(--muted);max-width:850px;font-size:13px;margin:-5px 0 20px">The specification-first survey in <a href="https://github.com/thinkthoughts/awards/tree/survey/prime-bridges/survey">our awards fork</a> identifies reusable mathematics and proof-tooling needs. These contributions offer improvements upstream. Technical checks and maintainer review are recorded separately; a proposed or submitted contribution is not a claim of acceptance. Full records: <a href="/pr/">Proofs, Patches &amp; Verification ↗</a>.</p>
+      <div class="toolbar"><input id="contribution-query" class="search" type="search" placeholder="Search projects, statements, patches…" aria-label="Search contributions"></div>
+      <div class="table-wrap"><table><thead><tr><th>Project</th><th>Contribution</th><th>Upstream status</th><th>Detail</th></tr></thead><tbody id="contribution-rows"></tbody></table></div>
+      <p style="font-size:12px;color:var(--faint);margin-top:13px">Contributions are tracked independently of the 17 Verified survey lifts shown above. The Lean 4 patch is listed as in preparation until its PR is submitted.</p>
+    </div></section>
+
     <section id="sources"><div class="wrap">
       <div class="section-head"><h2>Sources and reproducibility</h2><div class="section-aside">Pinned where evidence requires it</div></div>
       <div class="sources">
@@ -135,6 +144,71 @@
       }
     }
     input.addEventListener('input',render);document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{selectedFilter=b.dataset.filter;document.querySelectorAll('.filter').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render()}));render();
+
+    // The contributions register is independent of the curated declarations and their filters.
+    // Append new records here as upstream work is offered; update review status only on evidence.
+    const contributions = [
+      {
+        id: 'mathlib-totient', project: 'Mathlib', label: 'Nat.totient_prod_primes',
+        role: 'Euler’s totient formula for a product of distinct primes',
+        status: 'PR submitted · review not established', statusTag: 'nonisolated',
+        statement: "/-- Euler's product formula for a product of distinct primes. -/\ntheorem totient_prod_primes {s : Finset ℕ} (hs : ∀ p ∈ s, p.Prime) :\n    φ (∏ p ∈ s, p) = ∏ p ∈ s, (p - 1)",
+        detail: 'A compact reusable formula extracted from work on the General Divisor Theorem, prime-gap formalization, and survey totient bridges. The implementation is a 12-line addition to Mathlib/Data/Nat/Totient.lean, with no new imports.',
+        verification: 'Reported: lake build Mathlib.Data.Nat.Totient passed; 15 environment linters had no findings; style linter passed; standard axioms only (propext, Classical.choice, Quot.sound). The complete upstream CI/merge outcome is not recorded here.',
+        source: 'thinkthoughts/mathlib4 · branch totient-prod-primes · 5d2c8bb',
+        links: [
+          ['Source commit', 'https://github.com/thinkthoughts/mathlib4/commit/5d2c8bb7481c57a350b265c0832d44c466e0272e'],
+          ['Upstream PR search', 'https://github.com/leanprover-community/mathlib4/pulls?q=is%3Apr+author%3Athinkthoughts'],
+          ['Contribution record', '/pr/'],
+          ['GDT repository', 'https://github.com/thinkthoughts/general-divisor-theorem']
+        ]
+      },
+      {
+        id: 'lean4-omega', project: 'Lean 4', label: 'omega: integer modulus evaluation',
+        role: 'Prevent Nat evaluation of Int divisors in omega’s frontend',
+        status: 'Issue comment published · PR in preparation', statusTag: 'reference',
+        statement: "| (``HMod.hMod, #[_, _, _, _, n, k]) =>\n-    match groundNat? k with\n+    match groundInt? k with\n     | some k' => do\n-      let k' := toExpr (k' : Int)\n+      let k' := toExpr k'",
+        detail: 'Issue #15608 identifies a mismatch in src/Lean/Elab/Tactic/Omega/Frontend.lean: evaluating a signed modulus using groundNat? can turn 0 - 1 into 0 and produce a kernel-rejected proof. The two-line correction evaluates the divisor as Int. The broader lazy case-splitting optimization is separate.',
+        verification: 'Out-of-tree patch test reported on 4.37.0-nightly-2026-10-23: eight regression goals proved and checked with leanchecker and nanoda; outputs compared across 70 existing omega test files. This is not yet an upstream PR or an upstream CI result.',
+        source: 'thinkthoughts/lean4 · investigations/omega-int-not-dvd',
+        links: [
+          ['Issue #15608', 'https://github.com/leanprover/lean4/issues/15608'],
+          ['Lean fork', 'https://github.com/thinkthoughts/lean4'],
+          ['Contribution record', '/pr/']
+        ]
+      }
+    ];
+    const contributionBody = document.getElementById('contribution-rows');
+    const contributionQuery = document.getElementById('contribution-query');
+    function renderContributions() {
+      contributionBody.replaceChildren();
+      const q = contributionQuery.value.toLowerCase().trim();
+      const found = contributions.filter(c => [c.project,c.label,c.role,c.status,c.detail,c.statement,c.source].join(' ').toLowerCase().includes(q));
+      if (!found.length) {
+        const row = el('tr'); const cell = el('td','empty','0 matching contributions.');
+        cell.colSpan = 4; row.append(cell); contributionBody.append(row); return;
+      }
+      for (const c of found) {
+        const row=el('tr'), project=el('td'), role=el('td'), status=el('td'), action=el('td');
+        project.append(el('strong','symbol',c.project));
+        role.append(el('code','symbol',c.label),el('span','sub',c.role));
+        status.append(el('span','pill '+c.statusTag,c.status));
+        const btn=el('button','detail-button','View statement +');
+        btn.type='button'; btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-controls','contribution-'+c.id);
+        action.append(btn); row.append(project,role,status,action); contributionBody.append(row);
+        const expansion=el('tr','expansion'); expansion.id='contribution-'+c.id;
+        const cell=el('td');cell.colSpan=4;
+        const layout=el('div','layout'), main=el('div'), sidebar=el('div');
+        main.append(el('h4','','Lean statement / proposed code change'),el('pre','',c.statement));
+        const scopeTitle=el('h4','','Purpose and scope');scopeTitle.style.marginTop='18px';main.append(scopeTitle,el('div','fact',c.detail));
+        sidebar.append(el('h4','','Verification evidence'),el('div','fact',c.verification),el('h4','','Source'));sidebar.append(el('div','fact',c.source),el('h4','','References'));
+        const refs=el('div','fact'); for(const [label,url] of c.links){const a=el('a','',label+' ↗');a.href=url;if(url.startsWith('https://')){a.target='_blank';a.rel='noopener noreferrer'}refs.append(a,document.createElement('br'))}sidebar.append(refs);
+        layout.append(main,sidebar);cell.append(layout);expansion.append(cell);contributionBody.append(expansion);
+        btn.addEventListener('click',()=>{const opened=expansion.classList.toggle('visible');btn.setAttribute('aria-expanded',String(opened));btn.textContent=opened?'Hide statement −':'View statement +'});
+      }
+    }
+    contributionQuery.addEventListener('input',renderContributions);
+    renderContributions();
   </script>
 </body>
 </html>
