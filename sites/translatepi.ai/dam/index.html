@@ -1,1 +1,253 @@
-<html></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Dense Associative Memory — Exact Finite Expectations | translatepi.ai</title>
+  <meta name="description" content="Kernel-checked Lean formalization of dense associative memory: exact signal/noise decomposition, conditional mean-zero cross-talk, and the finite expected one-flip energy gap.">
+  <meta property="og:title" content="Dense Associative Memory — Exact Finite Expectations">
+  <meta property="og:description" content="8,942 build jobs, 40 audited declarations, and exact finite one-flip expectation theorems in Lean.">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #090c12;
+      --panel: #101720;
+      --raised: #161f2a;
+      --ink: #edf2f5;
+      --subtle: #aab7c6;
+      --faint: #75879a;
+      --line: #2c3b49;
+      --mint: #92e3c3;
+      --gold: #efc47a;
+      --blue: #a4c6ff;
+      --max: 1080px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: radial-gradient(ellipse 65% 28% at 55% -5%, #203044 0, transparent 80%), var(--bg);
+      color: var(--ink);
+      font: 16px/1.75 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--mint); text-underline-offset: 3px; }
+    a:hover { color: #c4f6df; }
+    a:focus-visible { outline: 2px solid var(--mint); outline-offset: 4px; border-radius: 3px; }
+    .wrap { width: min(calc(100% - 40px), var(--max)); margin: auto; }
+    .sitebar {
+      border-bottom: 1px solid var(--line);
+      background: rgba(9,12,18,.82);
+    }
+    .sitebar .wrap { display: flex; justify-content: space-between; align-items: center; gap: 20px; min-height: 74px; }
+    .identity { display: inline-flex; gap: 12px; align-items: center; color: var(--ink); text-decoration: none; font-weight: 730; letter-spacing: -.025em; font-size: 1.1rem; }
+    .mark {
+      display: grid; place-items: center; width: 38px; height: 38px;
+      border: 1px solid var(--mint); border-radius: 11px; color: var(--mint);
+      font: 700 23px/1 Georgia, serif;
+      box-shadow: inset 0 0 16px #92e3c316;
+    }
+    nav { display: flex; gap: 21px; flex-wrap: wrap; font-size: .91rem; }
+    nav a { color: var(--subtle); text-decoration: none; }
+    nav a:hover { color: var(--ink); }
+    .hero { padding: 64px 0 50px; }
+    .eyebrow, .section-label, .kicker {
+      font: 700 .76rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      text-transform: uppercase; letter-spacing: .15em; color: var(--mint);
+    }
+    h1, h2, h3 { line-height: 1.18; letter-spacing: -.035em; }
+    h1 { margin: 16px 0 18px; max-width: 900px; font-size: clamp(2.55rem, 6.2vw, 5.1rem); font-weight: 650; }
+    h2 { font-size: clamp(1.58rem, 2.8vw, 2.25rem); margin: 6px 0 22px; font-weight: 650; }
+    h3 { font-size: 1.13rem; margin: 0 0 8px; }
+    p { margin: 0 0 18px; }
+    .dek { color: var(--subtle); max-width: 830px; font-size: clamp(1.09rem, 2.4vw, 1.35rem); line-height: 1.65; }
+    .meta { display: flex; gap: 9px; flex-wrap: wrap; margin: 30px 0 0; }
+    .pill { border: 1px solid var(--line); border-radius: 999px; padding: 7px 13px; color: var(--subtle); font: 600 .82rem/1.4 ui-monospace, monospace; }
+    .pill.good { border-color: #386e60; color: var(--mint); background: #112b25; }
+    .hero-rule { height: 1px; background: linear-gradient(90deg, var(--mint), var(--line) 45%, transparent); margin-top: 45px; }
+    main { padding-bottom: 80px; }
+    section { padding: 47px 0; border-bottom: 1px solid var(--line); }
+    .intro { max-width: 875px; font-size: 1.12rem; }
+    .formula {
+      margin: 25px 0; padding: 22px 25px;
+      border-left: 3px solid var(--mint); background: var(--panel);
+      border-radius: 0 12px 12px 0;
+      font: clamp(1.05rem, 2.4vw, 1.48rem)/1.65 Georgia, "Times New Roman", serif;
+      overflow-x: auto;
+    }
+    .formula.center { text-align: center; }
+    .formula .small { font-size: .76em; color: var(--subtle); display: block; margin-top: 5px; }
+    .mathvar { font-style: italic; }
+    .accent { color: var(--mint); }
+    .gold { color: var(--gold); }
+    .muted { color: var(--subtle); }
+    code { color: #bed9ff; font: .9em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow-wrap: anywhere; }
+    .proof-flow { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 27px 0; }
+    .proof-card { background: var(--panel); border: 1px solid var(--line); border-radius: 13px; padding: 23px; }
+    .proof-card .n { font: 700 .77rem ui-monospace, monospace; color: var(--mint); margin-bottom: 13px; }
+    .proof-card p { color: var(--subtle); font-size: .93rem; margin: 0; }
+    .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 11px; margin-top: 30px; }
+    .stat { padding: 18px; background: var(--raised); border: 1px solid var(--line); border-radius: 11px; }
+    .stat strong { display: block; font: 650 clamp(1.55rem, 3vw, 2.1rem)/1.2 system-ui,sans-serif; color: var(--mint); }
+    .stat span { font-size: .8rem; color: var(--subtle); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; min-width: 650px; }
+    th, td { padding: 13px 17px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+    tr:last-child td { border-bottom: 0; }
+    th { background: var(--raised); color: var(--subtle); text-transform: uppercase; font: 700 .73rem ui-monospace,monospace; letter-spacing: .09em; }
+    td:first-child { width: 45%; }
+    .boundary { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px; }
+    .boundary > div { padding: 23px; border-radius: 13px; background: var(--panel); border: 1px solid var(--line); }
+    .boundary p, .boundary li { color: var(--subtle); font-size: .94rem; }
+    ul { padding-left: 23px; }
+    li { margin-bottom: 9px; }
+    .source-links { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin-top: 25px; }
+    .source-links a { display: block; text-decoration: none; border: 1px solid var(--line); border-radius: 12px; padding: 19px; background: var(--panel); }
+    .source-links a:hover { border-color: var(--mint); }
+    .source-links strong { display: block; color: var(--ink); }
+    .source-links span { display: block; color: var(--subtle); font-size: .85rem; margin-top: 4px; }
+    footer { padding: 35px 0 60px; color: var(--subtle); font-size: .9rem; }
+    footer .wrap { display: flex; justify-content: space-between; align-items: baseline; gap: 25px; }
+    footer em { color: var(--ink); font: normal 1.05rem Georgia, serif; }
+    @media (max-width: 780px) {
+      .hero { padding-top: 40px; }
+      .sitebar .wrap { padding: 14px 0; align-items: flex-start; flex-direction: column; gap: 10px; }
+      .proof-flow, .stats { grid-template-columns: repeat(2,1fr); }
+      .boundary, .source-links { grid-template-columns: 1fr; }
+      footer .wrap { display: block; }
+    }
+    @media (max-width: 500px) {
+      .wrap { width: min(calc(100% - 28px), var(--max)); }
+      .proof-flow, .stats { grid-template-columns: 1fr; }
+      .formula { padding: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="sitebar">
+    <div class="wrap">
+      <a class="identity" href="https://translatepi.ai/"><span class="mark" aria-hidden="true">π</span><span>translatepi.ai</span></a>
+      <nav aria-label="Primary"><a href="https://translatepi.ai/">Home</a><a href="https://github.com/thinkthoughts/lean-dense-associative-memory">Lean repository</a><a href="#verification">Verification</a></nav>
+    </div>
+  </div>
+  <header class="hero wrap">
+    <div class="eyebrow">Formal methods / Reading point / DAM</div>
+    <h1>Exact finite expectations for <span class="accent">Dense Associative Memory.</span></h1>
+    <p class="dek">A Lean-checked path from an energy landscape to the exact expected one-flip energy gap. Conditional cross-talk cancellation is proved without a Gaussian approximation or a large-network limit.</p>
+    <div class="meta">
+      <span class="pill good">Kernel-checked · CI passed</span>
+      <span class="pill">Lean 4.35.0-rc2</span>
+      <span class="pill">Commit d13c271</span>
+      <span class="pill">October 29, 2026</span>
+    </div>
+    <div class="hero-rule"></div>
+  </header>
+  <main class="wrap">
+    <section id="reading-point">
+      <div class="section-label">01 / Reading point</div>
+      <h2>From memory energy to an expected gap</h2>
+      <p class="intro">The starting point is the generalized associative-memory energy in Krotov and Hopfield's <a href="https://arxiv.org/abs/1606.01164">Dense Associative Memory for Pattern Recognition</a>. A stored binary pattern is tested against a one-neuron flip. In Lean, the finite calculation is divided into a deterministic signal and the contributions from other stored patterns.</p>
+      <div class="formula center">
+        E(σ) = −∑<sub>μ</sub> F(∑<sub>i</sub> ξ<sub>i</sub><sup>μ</sup>σ<sub>i</sub>)
+        <span class="small">Polynomial instance: F(x) = x<sup>n</sup></span>
+      </div>
+      <p>The specification keeps distinct the mathematical energy, asynchronous update rule, finite probability model, asymptotic arguments, and any physical implementation.</p>
+    </section>
+
+    <section id="results">
+      <div class="section-label">02 / Verified progression</div>
+      <h2>Three exact steps</h2>
+      <div class="proof-flow">
+        <article class="proof-card"><div class="n">CP6b</div><h3>Decompose</h3><p>The one-flip energy gap is an exact signal plus non-target cross-talk.</p></article>
+        <article class="proof-card"><div class="n">CP6c.1</div><h3>Cancel</h3><p>Cross-talk has conditional mean zero under the finite uniform binary-pattern model.</p></article>
+        <article class="proof-card"><div class="n">CP6c.2</div><h3>Average</h3><p>The full conditional expected gap equals the deterministic polynomial signal.</p></article>
+      </div>
+      <p class="kicker">Exact one-flip energy</p>
+      <div class="formula center">ΔE<sub>i</sub><sup>μ</sup> = [N<sup>n</sup> − (N − 2)<sup>n</sup>] + η<sub>i</sub><sup>μ</sup></div>
+      <p>The selected memory has overlap <span class="mathvar">N</span> with itself and <span class="mathvar">N − 2</span> after one coordinate is flipped. The remaining memories supply the cross-talk term η.</p>
+      <p class="kicker">CP6c.1 / Conditional cross-talk</p>
+      <div class="formula center"><span class="accent">𝔼[η<sub>i</sub><sup>μ</sup> | ξ<sup>μ</sup> = t] = 0</span></div>
+      <p>The proof pairs configurations using a coordinate-toggle involution. For a non-target memory, the toggle reverses its energy-difference summand while preserving the target pattern. This cancellation holds for an <em>arbitrary separation function</em> F under the stated finite symmetry conditions; it does not assert that each cross-talk sample is zero.</p>
+      <p class="kicker">CP6c.2 / Exact conditional expectation</p>
+      <div class="formula center"><span class="accent">𝔼[ΔE<sub>i</sub><sup>μ</sup> | ξ<sup>μ</sup> = t] = N<sup>n</sup> − (N − 2)<sup>n</sup></span></div>
+      <p>For <code>polyF n</code>, finite-sum linearity removes the mean-zero cross-talk and preserves the constant signal. The subtraction is interpreted in the real numbers, including networks with one or two neurons. No asymptotic or Gaussian reasoning is required.</p>
+    </section>
+
+    <section id="theorems">
+      <div class="section-label">03 / Source correspondence</div>
+      <h2>Inspect the Lean declarations</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Mathematical role</th><th>Lean declaration</th><th>Module</th></tr></thead>
+          <tbody>
+            <tr><td>Generalized DAM energy</td><td><code>energy</code></td><td><code>Basic</code></td></tr>
+            <tr><td>Energy-based update descent</td><td><code>energy_stepAt_le</code></td><td><code>Basic</code></td></tr>
+            <tr><td>Exact selected-memory signal</td><td><code>self_signal_term</code></td><td><code>Capacity</code></td></tr>
+            <tr><td>Exact signal/noise decomposition</td><td><code>flipEnergyGap_signal_noise_decomposition</code></td><td><code>Capacity</code></td></tr>
+            <tr><td>General-function cancellation</td><td><code>condMean_crossTalk_eq_zero</code></td><td><code>CrossTalk</code></td></tr>
+            <tr><td>Polynomial cross-talk mean</td><td><code>condMean_noiseTerm_eq_zero</code></td><td><code>CrossTalk</code></td></tr>
+            <tr><td>Exact conditional expected gap</td><td><code>condMean_flipEnergyGap_eq_signal</code></td><td><code>ExpectedGap</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted" style="margin-top:15px">Each name is a declaration, not a claim of having proved the paper's entire storage-capacity analysis. The conditional average is explicitly defined over a nonempty finite target-pattern fiber.</p>
+    </section>
+
+    <section id="verification">
+      <div class="section-label">04 / Verification evidence</div>
+      <h2>Reproducible and independently checked</h2>
+      <p>The repository at <a href="https://github.com/thinkthoughts/lean-dense-associative-memory/tree/d13c271"><code>d13c271</code></a> builds with its pinned Lean and Mathlib dependencies. The VPS build and GitHub Actions both succeeded. Every listed theorem and lemma was checked for axiom dependencies.</p>
+      <div class="stats" aria-label="Verification summary">
+        <div class="stat"><strong>8,942</strong><span>Build jobs completed</span></div>
+        <div class="stat"><strong>40/40</strong><span>Declarations audited</span></div>
+        <div class="stat"><strong>0</strong><span>Unexpected axioms</span></div>
+        <div class="stat"><strong>0</strong><span><code>sorryAx</code> dependencies</span></div>
+      </div>
+      <p class="muted" style="margin-top:21px">Audit footprint: 38 declarations depend on <code>propext</code>, <code>Classical.choice</code>, and <code>Quot.sound</code>; two depend on <code>propext</code> and <code>Quot.sound</code>. GitHub Actions passed on <code>main</code> after the merge.</p>
+      <div class="source-links">
+        <a href="https://github.com/thinkthoughts/lean-dense-associative-memory/blob/d13c271/REPORT.md"><strong>Verification report</strong><span>Build state, proof boundary, and evidence references</span></a>
+        <a href="https://github.com/thinkthoughts/lean-dense-associative-memory/tree/d13c271/verification"><strong>Raw axiom evidence</strong><span>Gate R0, CP6c.1, and CP6c.2 audits</span></a>
+      </div>
+    </section>
+
+    <section id="boundary">
+      <div class="section-label">05 / Leading constraints</div>
+      <h2>What follows—and what remains open</h2>
+      <div class="boundary">
+        <div>
+          <h3 class="accent">Verified finite layer</h3>
+          <ul>
+            <li>Exact binary one-flip mechanics and energy descent.</li>
+            <li>Deterministic signal/noise decomposition.</li>
+            <li>Symmetry-based conditional mean-zero cross-talk.</li>
+            <li>Exact conditional expected gap for polynomial separation.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="gold">Next reading points</h3>
+          <ul>
+            <li>CP6c.3: exact finite second moment and noise variance.</li>
+            <li>Certified retrieval-error tail bounds.</li>
+            <li>Hypothesis-bearing capacity scaling and asymptotics.</li>
+            <li>Separate numerical and physical-implementation refinements.</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:22px">A mean-zero interference term can fluctuate substantially; its expectation alone proves neither retrieval success nor a storage-capacity bound. Likewise, mathematical energy identities do not measure chip power, latency, or throughput.</p>
+    </section>
+
+    <section id="sources">
+      <div class="section-label">06 / Continue reading</div>
+      <h2>Source, code, and next checkpoint</h2>
+      <div class="source-links">
+        <a href="https://arxiv.org/abs/1606.01164"><strong>Krotov &amp; Hopfield (2016)</strong><span>Dense Associative Memory for Pattern Recognition · Primary mathematical source</span></a>
+        <a href="https://github.com/thinkthoughts/lean-dense-associative-memory"><strong>Lean DAM repository</strong><span>Source declarations, checkpoints, verification workflow</span></a>
+        <a href="https://github.com/thinkthoughts/lean-dense-associative-memory/blob/d13c271/ROADMAP.md"><strong>ROADMAP.md</strong><span>Finite variance, retrieval bounds, and implementation track</span></a>
+        <a href="https://labreports.app/dam/"><strong>Original lab report</strong><span>Historical reading point preceding CP6c.1–CP6c.2</span></a>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap"><em>Admissible generalizations trail leading specifications.</em><span>translatepi.ai · DAM reading point · 2026</span></div></footer>
+</body>
+</html>
