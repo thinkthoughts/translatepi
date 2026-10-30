@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f5ed">
+  <meta name="description" content="Choose your reading level: Math0, Math5, or Math29. A reading point begins with your choice.">
+  <title>Choose Your Reading Level · Repair Earth</title>
+  <style>
+    :root{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color-scheme:light;background:#f5f5ed;color:#202d28;font-synthesis:none}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 10% 0%,#dce9d8 0,transparent 36%),#f5f5ed}
+    .wrap{width:min(100% - 36px,1040px);margin:auto}.top{padding:26px 0;display:flex;justify-content:space-between;align-items:center;gap:20px}
+    .brand{font-weight:750;letter-spacing:-.04em;font-size:1.18rem;text-decoration:none;color:inherit}.brand span{color:#3e8060}.eyebrow{font-size:.74rem;letter-spacing:.18em;font-weight:800;text-transform:uppercase;color:#53715f}
+    main{padding:clamp(36px,7vw,82px) 0 48px}h1{font-size:clamp(2.5rem,7vw,5.8rem);line-height:1.02;letter-spacing:-.065em;margin:14px 0 18px;max-width:850px}
+    .lead{font-size:clamp(1rem,2.2vw,1.25rem);line-height:1.6;color:#56645b;margin:0 0 42px;max-width:600px}
+    .choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .choice{appearance:none;text-align:left;border:1px solid #cad5c9;border-radius:23px;background:#fffefa;color:inherit;min-height:310px;padding:26px;cursor:pointer;display:flex;flex-direction:column;box-shadow:0 9px 24px #203d2110;transition:transform .2s,border-color .2s,box-shadow .2s}
+    .choice:hover{transform:translateY(-5px);border-color:#518666;box-shadow:0 16px 35px #203d211c}.choice:focus-visible,.next:focus-visible{outline:4px solid #3b8662;outline-offset:4px}
+    .num{font-size:.82rem;font-weight:850;letter-spacing:.15em;color:#55735e}.equation{font-size:clamp(1.24rem,2.2vw,2rem);font-weight:750;letter-spacing:-.045em;line-height:1.4;margin:auto 0 28px;font-variant-numeric:lining-nums tabular-nums}
+    .name{font-size:1.4rem;font-weight:750;letter-spacing:-.035em}.desc{font-size:.91rem;color:#647166;line-height:1.5;margin:6px 0 0}.arrow{margin-top:24px;font-size:1.4rem;color:#3c855f}
+    .choice:nth-child(1){background:#f1f0eb}.choice:nth-child(2){background:#e8f0e3}.choice:nth-child(3){background:#e3ede9}
+    .detail{margin-top:22px;border:1px solid #cad5c9;border-radius:22px;padding:25px 28px;background:#fffefa;display:none;align-items:center;justify-content:space-between;gap:24px}
+    .detail.visible{display:flex}.detail h2{font-size:1.4rem;margin:0 0 5px;letter-spacing:-.035em}.detail p{margin:0;color:#58675d;line-height:1.5}.next{border:0;border-radius:999px;background:#214b36;color:white;padding:14px 23px;font:inherit;font-weight:700;cursor:pointer;white-space:nowrap}
+    footer{border-top:1px solid #d2dbcf;padding:25px 0 35px;color:#69776d;font-size:.82rem;display:flex;justify-content:space-between;gap:15px}
+    @media(max-width:730px){.choices{grid-template-columns:1fr}.choice{min-height:190px;padding:22px}.equation{margin:20px 0 12px}.arrow{margin-top:12px}.detail.visible{display:block}.next{margin-top:20px;width:100%}footer{display:block}}
+    @media(prefers-reduced-motion:reduce){.choice{transition:none}.choice:hover{transform:none}}
+    @media(prefers-color-scheme:dark){:root{color-scheme:dark;background:#111c18;color:#e9f2e8}body{background:radial-gradient(ellipse at 10% 0%,#244333 0,transparent 36%),#111c18}.eyebrow,.num{color:#9fbfac}.lead,.desc,.detail p,footer{color:#b0c1b4}.choice,.choice:nth-child(1){background:#202b25;color:#e9f2e8}.choice:nth-child(2){background:#23372b}.choice:nth-child(3){background:#1d3531}.choice,.detail{border-color:#42604c}.detail{background:#202b25}.arrow{color:#a4dbb2}footer{border-color:#36503e}}
+  </style>
+</head>
+<body>
+  <header class="wrap top"><a class="brand" href="/">repair<span>earth</span>.ai</a><span class="eyebrow">Reading Point · 001</span></header>
+  <main class="wrap">
+    <div class="eyebrow">Reader's choice</div>
+    <h1>Choose your<br>reading level.</h1>
+    <p class="lead">Three ways to approach a reading point. Begin anywhere. Choose again whenever you like.</p>
+    <section class="choices" aria-label="Choose a reading level">
+      <button class="choice" type="button" data-level="0" aria-controls="detail" aria-expanded="false"><span class="num">MATH0 · FICTION</span><span class="equation">1 + 1 + 1 + 1 + 1 = 0</span><span class="name">Imagine</span><span class="desc">An intentionally false equation. Explore an imaginary reading.</span><span class="arrow" aria-hidden="true">↗</span></button>
+      <button class="choice" type="button" data-level="5" aria-controls="detail" aria-expanded="false"><span class="num">MATH5 · COUNTING</span><span class="equation">1 + 1 + 1 + 1 + 1 = 5</span><span class="name">Identify</span><span class="desc">Count objects. Specify people, properties, and context.</span><span class="arrow" aria-hidden="true">↗</span></button>
+      <button class="choice" type="button" data-level="29" aria-controls="detail" aria-expanded="false"><span class="num">MATH29 · READING POINT</span><span class="equation">(0 ≠ 5) ∧ (5 &lt; 29)</span><span class="name">Investigate</span><span class="desc">Zero differs from five, <strong>and</strong> five is less than 29.</span><span class="arrow" aria-hidden="true">↗</span></button>
+    </section>
+    <section class="detail" id="detail" aria-live="polite" aria-label="Selected reading level"><div><h2 id="detail-title"></h2><p id="detail-text"></p></div><button class="next" id="next" type="button">Choose again ↻</button></section>
+  </main>
+  <footer class="wrap"><span>Reading levels describe choices, not people.</span><span>Listen · Identify · Specify</span></footer>
+  <script>
+    const definitions={
+      '0':['Math0 · Imagine','Five ones equal five in ordinary arithmetic. This zero equation is deliberately fictional. What happens when a claim changes the count?'],
+      '5':['Math5 · Identify','Count five identifiable objects. Specify what one object means and observe any physical context.'],
+      '29':['Math29 · Investigate','The symbol ∧ means “and.” Both statements are true: zero differs from five, and five is less than twenty-nine. Choose a subject and examine its claims.']
+    };
+    const buttons=[...document.querySelectorAll('.choice')];
+    const detail=document.querySelector('#detail');
+    function clearChoice(){detail.classList.remove('visible');buttons.forEach(b=>b.setAttribute('aria-expanded','false'));buttons[0].focus();}
+    buttons.forEach(button=>button.addEventListener('click',()=>{
+      const [title,description]=definitions[button.dataset.level];
+      document.querySelector('#detail-title').textContent=title;
+      document.querySelector('#detail-text').textContent=description;
+      buttons.forEach(b=>b.setAttribute('aria-expanded',String(b===button)));
+      detail.classList.add('visible');detail.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'nearest'});
+    }));
+    document.querySelector('#next').addEventListener('click',clearChoice);
+  </script>
+</body>
+</html>
