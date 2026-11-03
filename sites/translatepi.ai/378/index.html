@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="OpenAI Math 378: a Lean-verified implication from OpenAI's subexponential SAT theorem to the negation of ParityLifts' PositiveRateETH predicate.">
+  <meta name="description" content="OpenAI Math 378: kernel-checked negation of PositiveRateETH and a verified cross-formalization implication to Anthropic's ETHIsFalse predicate.">
   <meta name="color-scheme" content="light dark">
   <title>378 | Kernel-checked ¬ PositiveRateETH — formalize.now</title>
   <style>
@@ -21,13 +21,13 @@
   </style>
 </head>
 <body>
-<header><div class="wrap top"><a class="brand" href="https://formalize.now/">formalize<span>.now</span> / 378</a><nav aria-label="Page navigation"><a href="/378.pdf">Paper (PDF)</a><a href="#reading-points">Reading points</a><a href="#proof">Proof chain</a><a href="#verification">Verification</a><a href="#scope">Scope</a></nav></div></header>
+<header><div class="wrap top"><a class="brand" href="https://formalize.now/">formalize<span>.now</span> / 378</a><nav aria-label="Page navigation"><a href="/378.pdf">Paper (PDF)</a><a href="#reading-points">Reading points</a><a href="#proof">Proof chain</a><a href="#cross-formalization">ETH comparison</a><a href="#verification">Verification</a><a href="#scope">Scope</a></nav></div></header>
 <main class="wrap">
   <div class="hero">
     <div class="eyebrow">OpenAI Math 378 · Lean 4.34.1</div>
     <h1 style="color: gold; font-weight: 200; letter-spacing: 0">A verified negation of PositiveRateETH</h1>
     <p class="lede">A kernel-checked Lean bridge connects OpenAI's subexponential bounded-width SAT theorem, applied at width 3 to the negation of ParityLifts' <code>PositiveRateETH</code> predicate. The bridge formalizes the SAT encoding conversion, machine simulation, polynomial overhead, and exponential-rate comparison.</p>
-    <div class="meta"><span class="chip ok">Kernel checked</span><span class="chip">11,600 build jobs</span><span class="chip">Exit 0</span><span class="chip">A–C3 documented</span></div>
+    <div class="meta"><span class="chip ok">Kernel checked</span><span class="chip">11,600 build jobs · original bridge</span><span class="chip ok">RPI-ETH-010 verified</span><span class="chip">Two formal ETH predicates connected</span></div>
   </div>
   <aside class="paper-cta" aria-labelledby="paper-title">
     <div class="paper-cta-copy">
@@ -42,7 +42,7 @@
   <section id="reading-points">
     <div class="eyebrow">Three connected statements</div>
     <h2>Reading points</h2>
-    <p>Each reading point has a separate role: source theorem, formal specification, and proved result. Identifiers below are provisional pending registration in the RPI catalog.</p>
+    <p>Each original reading point has a separate role: source theorem, formal specification, and proved result. The A/B/C labels are historical identifiers for this page; the <a href="https://github.com/thinkthoughts/rpi-index/blob/a0bef7d/data/eth.json">ETH registry</a> now records the cross-formalization implication as <code>RPI-ETH-010</code>.</p>
     <div class="rpis">
       <article class="rpi"><div class="num">RPI-378-A · Source theorem</div><h3>OpenAI's SAT algorithm</h3><p><code>SqrtLogSpace.original_sat_main : SqrtLog.Statement.MainTheorem</code></p><p>For every width k ≥ 3, a fixed deterministic machine and width-dependent constants decide bounded-width CNF with a subexponential variable-count factor and polynomial encoding-length factor. OpenAI's Comparator checks <code>exact_count_and_sat</code>; <code>original_sat_main</code> is derived from it and kernel-checked in the final build.</p><a href="https://github.com/thinkthoughts/math/blob/81ec97cd23d21675cee4ee76768fffba33a61e17/lean/OAI/Algorithms/SubexponentialSAT/SqrtLogSpace/Final.lean">Inspect Lean source</a></article>
       <article class="rpi"><div class="num">RPI-378-B · Specification</div><h3>Positive-rate ETH</h3><p><code>OAI.ParityWL.Complexity.PositiveRateETH</code></p><p>A formal assertion that some positive exponential rate excludes all deterministic multitape 3-SAT deciders within the specified polynomial-times-exponential bound.</p><a href="https://github.com/thinkthoughts/math/blob/81ec97cd23d21675cee4ee76768fffba33a61e17/lean/OAI/Combinatorics/ParityLifts/SATChoice.lean">Inspect definition</a></article>
@@ -50,9 +50,29 @@
     </div>
   </section>
   <section id="proof"><div class="eyebrow">Encoding · Machine · Rate</div><h2>The checked proof chain</h2><ol class="chain"><li><strong>Encoding correspondence.</strong> Convert ParityLifts' normalized 3-CNF inputs to OpenAI's exact canonical CNF bit encoding, preserving satisfiability, keeping the variable count bounded, and proving bit-for-bit equality with OpenAI’s <code>encodeCNF</code> (<code>canonicalWord_eq</code>). Conversion time is polynomial in the variable bound N (<code>canonicalWordProgram_time_poly</code>).</li><li><strong>Machine translation.</strong> Represent OpenAI's primitive multitape machine in ParityLifts' finite-alphabet machine model with step-level correspondence.</li><li><strong>Executable simulation.</strong> Construct a fixed ParityLifts <code>FCode</code> runner and prove polynomial resource overhead, yielding <code>simulationHypothesis_proved</code>.</li><li><strong>Rate comparison.</strong> Bound OpenAI’s subexponential factor <code>2^(A · runtimeScale N)</code> by an arbitrarily small positive exponential rate (<code>runtimeFactor_expBound</code>); incorporate polynomial converter and simulator costs using <code>sat_code_rate</code>, and refute <code>PositiveRateETH</code> with <code>original_sat_main</code>.</li></ol><div class="math"><code>original_sat_main → not_positiveRateETH_of_mainTheorem → ¬ PositiveRateETH</code></div></section>
+  <section id="cross-formalization">
+    <div class="eyebrow">RPI-ETH-010 · Cross-formalization · VPS verified</div>
+    <h2>From OpenAI’s ETH predicate to Anthropic’s</h2>
+    <p>A second, independent Lean bridge proves an unconditional implication between the two projects’ formal ETH statements. Its proof uses explicit encoding conversion and machine simulation; it does not depend on OpenAI’s SAT proof or Anthropic’s existing proof of <code>ETHIsFalse</code>.</p>
+    <div class="theorem" aria-label="Verified cross-formalization theorem">
+      <h2>Verified cross-formalization declaration</h2>
+      <pre><code>theorem OAI.Bridges.AnthropicETH.not_positiveRateETH_implies_ethIsFalse :
+  ¬ OAI.ParityWL.Complexity.PositiveRateETH → MainResults.ETHIsFalse</code></pre>
+      <p>No simulation or converter hypotheses remain. Source proof commit <a href="https://github.com/thinkthoughts/math/tree/d6b79b7d1">d6b79b7d1</a>; release documentation commit <a href="https://github.com/thinkthoughts/math/tree/55fdced45">55fdced45</a>.</p>
+    </div>
+    <ol class="chain">
+      <li><strong>FinTM2 simulation (H1).</strong> Simulate a ParityLifts multitape machine in Mathlib’s stack-machine model, with the required halting configuration and time bound <code>4 * (x.length + s + 1)</code>.</li>
+      <li><strong>Encoding converter (H2).</strong> A verified polynomial-time <code>PolyProgram</code> converts Anthropic’s <code>encClauses 3 φ</code> exactly to ParityLifts’ <code>encodeFormula (toFormula φ)</code>, with a uniform degree.</li>
+      <li><strong>Quantifier and rate transfer.</strong> Clause-count and encoding-length bounds absorb polynomial overhead into arbitrarily small positive exponential rates, yielding <code>MainResults.ETHIsFalse</code>.</li>
+    </ol>
+    <div class="math"><code>¬ PositiveRateETH → MainResults.ETHIsFalse</code></div>
+    <div class="facts"><div class="fact"><strong>8,985</strong><span>successful VPS build jobs</span></div><div class="fact"><strong>19,867</strong><span>constants reachable in final theorem audit</span></div><div class="fact"><strong>Comparator accepted</strong><span>Lean default kernel · exit 0</span></div></div>
+    <p>The dependency guard excludes forbidden proof constants and out-of-scope OpenAI modules. The final theorem’s only reported axioms are <code>[propext, Classical.choice, Quot.sound]</code>. VPS Comparator reported <em>“Lean default kernel accepts the solution”</em> and <em>“Your solution is okay!”</em> with nanoda disabled. A separate standalone nanoda replay was accepted in the local harness, not on the VPS.</p>
+    <div class="links"><a href="https://github.com/thinkthoughts/math/blob/d6b79b7d1/lean/OAI/Bridges/AnthropicETH/Main.lean">Final Lean theorem</a><a href="https://github.com/thinkthoughts/math/blob/55fdced45/docs/RPI-378.3d_REPORT.md">VPS verification report</a><a href="https://github.com/thinkthoughts/math/blob/d6b79b7d1/lean/ComparatorChallenges/AnthropicETHCrossFormalization.json">Comparator challenge</a><a href="https://github.com/thinkthoughts/rpi-index/blob/a0bef7d/data/eth.json">RPI-ETH-010 registry</a></div>
+  </section>
   <section id="verification"><div class="eyebrow">Reproducibility</div><h2>Independent VPS verification</h2><div class="facts"><div class="fact"><strong>Lean 4.34.1</strong><span>pinned toolchain</span></div><div class="fact"><strong>11,600</strong><span>successful build jobs</span></div><div class="fact"><strong>Exit code 0</strong><span>final module</span></div></div><div class="math"><code>LEAN_NUM_THREADS=2 lake build OAI.Bridges.ETH.FinalImplication</code></div><p>Final axiom audit: <code>[propext, Classical.choice, Quot.sound]</code>. Verified proof snapshot: <code>81ec97cd23d21675cee4ee76768fffba33a61e17</code>. Documentation commit: <code>81708f93f</code>.</p><div class="links"><a href="https://github.com/thinkthoughts/math/blob/81708f93f/docs/ETH_BRIDGE_REPORT.md">Technical report</a><a href="https://github.com/thinkthoughts/math/blob/81708f93f/docs/ETH_BRIDGE_REPRODUCE.md">Reproduce the check</a><a href="https://github.com/thinkthoughts/math/blob/81708f93f/docs/ETH_BRIDGE_MANIFEST.md">Theorem manifest</a><a href="https://github.com/thinkthoughts/math/tree/eth-bridge/component-B">GitHub branch</a></div></section>
-  <section id="scope"><div class="eyebrow">Formal scope</div><h2>What the result establishes</h2><p>The kernel-checked conclusion is the negation of the specifically defined ParityLifts predicate <code>PositiveRateETH</code>. That predicate quantifies over deterministic finite-alphabet multitape machines deciding 3-SAT on ParityLifts' binary formula encoding, with a polynomial input-length factor and a positive exponential variable-count rate.</p><p>Comparison with standard textbook ETH is a separate semantic-fidelity review of the machine model, encoding, and quantifiers. The final statement’s meaning is fixed by the ParityLifts definitions; OpenAI’s <code>MainTheorem</code> enters as a kernel-checked proof term. OpenAI’s original paper and its precise Lean theorem have distinct complexity bounds; the bridge uses the Lean theorem.</p><p><strong>Review focus:</strong> exact definition unfolding; machine and encoding faithfulness; quantifier order; rate preservation; and independent reproduction of the final kernel check.</p></section>
+  <section id="scope"><div class="eyebrow">Formal scope</div><h2>What the results establish</h2><p>The first kernel-checked conclusion is the negation of the specifically defined ParityLifts predicate <code>PositiveRateETH</code>. That predicate quantifies over deterministic finite-alphabet multitape machines deciding 3-SAT on ParityLifts' binary formula encoding, with a polynomial input-length factor and a positive exponential variable-count rate.</p><p>The additional RPI-ETH-010 theorem proves that this negation implies Anthropic’s formal predicate <code>MainResults.ETHIsFalse</code>. Together they provide a checked route to that Anthropic statement, while the cross-formalization proof itself does not import either project’s existing SAT/ETH proof.</p><p>These results connect <em>formal definitions</em>; they do not yet establish a two-way equivalence with standard textbook ETH. The converse remains open in this project. OpenAI’s original paper and its precise Lean theorem have distinct complexity bounds; the first bridge uses the Lean theorem.</p><p><strong>Review focus:</strong> exact definition unfolding; machine and encoding faithfulness; quantifier order; rate preservation; and independent reproduction of the final kernel checks.</p></section>
 </main>
-<footer><div class="wrap"><span>formalize.now / 378 · v2 · 2026-11-01</span><span>Source: <a href="https://github.com/thinkthoughts/math/tree/eth-bridge/component-B">thinkthoughts/math</a> · Companion: <a href="https://translatepi.ai/378/">translatepi.ai/378/</a></span></div></footer>
+<footer><div class="wrap"><span>formalize.now / 378 · v3 · 2026-11-03</span><span>Sources: <a href="https://github.com/thinkthoughts/math/tree/eth-bridge/component-B">original bridge</a> · <a href="https://github.com/thinkthoughts/math/tree/eth-bridge/rpi-378.3a">ETH comparison</a> · <a href="https://github.com/thinkthoughts/rpi-index">RPI registry</a></span></div></footer>
 </body>
 </html>
