@@ -1,0 +1,142 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=0.9in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{xcolor,hyperref,enumitem,booktabs,array,fancyhdr}
+\definecolor{accent}{HTML}{147EAA}
+\hypersetup{colorlinks=true,urlcolor=accent,linkcolor=accent,citecolor=accent}
+\setlength{\parskip}{5pt}
+\setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{3em}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small OpenAI Math 378: two verified ETH bridges}\fancyhead[R]{\small Technical note v3}\fancyfoot[C]{\thepage}
+\newcommand{\lean}[1]{\texttt{#1}}
+\title{\vspace{-1cm}\bfseries Kernel-Checked Bridges from OpenAI Math 378\\to Two Formal ETH Predicates}
+\author{Formalize.now \quad\textnormal{Technical note, version 3}}
+\date{November 3, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We document two kernel-checked Lean 4.34.1 bridges. The first derives the negation of OpenAI ParityLifts' \lean{PositiveRateETH} from OpenAI's formal bounded-width SAT theorem, by exact input conversion, machine simulation, and asymptotic rate transfer. The second proves the independent implication $\neg\mathrm{PositiveRateETH}\Rightarrow\mathrm{MainResults.ETHIsFalse}$, connecting this predicate to Anthropic's ETH formalization by a verified ParityLifts-to-Mathlib \lean{FinTM2} simulation and a polynomial-time input encoding converter. The two final theorems were built on a VPS (11,600 and 8,985 jobs respectively); the cross-formalization passed Comparator's Lean default kernel check. Both dependency audits report only \lean{propext}, \lean{Classical.choice}, and \lean{Quot.sound}. The new theorem establishes an implication between two exact formal predicates, not an equivalence with textbook ETH.
+\end{abstract}
+
+\section{Statement of the result}
+The final declaration in \lean{OAI/Bridges/ETH/FinalImplication.\allowbreak{}lean} is:
+\begin{quote}\small\ttfamily
+ theorem not\_positiveRateETH :\\
+ \quad\textlnot{} OAI.ParityWL.Complexity.PositiveRateETH :=\\
+ \quad not\_positiveRateETH\_of\_mainTheorem\\
+ \qquad OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.original\_sat\_main
+\end{quote}
+The target predicate is defined using a deterministic finite-alphabet multitape machine $M$, CNF instances $F:\mathrm{Formula}(N)$ whose clauses have at most three literals (repeated clauses allowed), and a worst-case execution-time relation $\mathrm{SATTimeBound}$:
+\begin{equation}
+\mathrm{PositiveRateETH}:=\exists\delta>0,\ \neg\exists M,C,d\;\bigl(C>0\ \wedge\ \mathrm{SATTimeBound}(M,\, (N,L)\mapsto C(L+1)^d 2^{\delta N})\bigr).
+\label{eq:eth}
+\end{equation}
+Here $N$ denotes the declared variable count and $L$ the binary encoding length. Thus its negation supplies, for each $\delta>0$, an appropriate fixed machine and polynomial factor valid uniformly over inputs. The quantifier order is the positive-rate form associated with $s_3>0$ in Impagliazzo--Paturi~\cite{ip}. To see why, let $A(\delta)$ assert that a uniform deterministic decider with some polynomial input-length factor meets the $2^{\delta N}$ rate. For $0<\delta_1\le\delta_2$, $A(\delta_1)$ implies $A(\delta_2)$, using the same machine and constants. Hence an unattainable positive rate is accompanied by unattainability at every smaller positive rate. Negating Eq.~\eqref{eq:eth} gives $\forall\delta>0,\ A(\delta)$: the machine may depend on $\delta$, while each selected machine works on all encoded instances. The interpretation of the specific machine and encoding conventions is addressed in Section~\ref{sec:scope}.
+
+\section{Source theorem and complexity bound}
+OpenAI's source theorem, \lean{SqrtLogSpace.\allowbreak{}original\_sat\_main}, has type \lean{SqrtLog.\allowbreak{}Statement.\allowbreak{}MainTheorem}~\cite{openai}. For every fixed clause width $k\geq3$, \lean{Feasible k} holds. The latter asserts a primitive multitape machine deciding satisfiability of width-$k$ CNF inputs under OpenAI's canonical encoding, on every such input, with no promise or large-input qualification, and with positive constants $C,A$ and positive degree $d$ that depend on $k$ only.
+
+The Lean-verified runtime uses
+\begin{equation}
+T(n,L)\leq C(L+1)^d 2^{A\,\rho(n)},\qquad
+\rho(n)=\frac{n\,[\log\log(n+16)]^2}{\sqrt{\log(n+16)}}.
+\label{eq:sourcebound}
+\end{equation}
+where $n$ is the variable count of the OpenAI instance and $L$ is the length of its encoding \lean{Encoding.encodeCNF}.
+This is subexponential in $n$ up to the polynomial input-length factor since $\rho(n)/n\to0$. The associated manuscript discusses a sharper exponent with one rather than two powers of $\log\log n$; the bridge uses the Lean theorem in Eq.~\eqref{eq:sourcebound}.
+
+\section{Construction of the bridge}
+\subsection{Exact encoding conversion}
+The ParityLifts formula representation allows lists of clauses over \lean{Fin N}, each with at most three literals. The conversion constructs a canonical CNF word and establishes both (i) satisfiability preservation and (ii) bit-for-bit equality with OpenAI's \lean{Encoding.encodeCNF} (\lean{canonicalWord\_eq}). The executable \lean{canonicalWordProgram} runs on the normalized bit form \lean{minimizeList F.bitList} that ParityLifts' pipeline supplies, and \lean{canonicalWordProgram\_time\_poly} bounds it by
+\begin{equation}
+\exists c,d\in\mathbb N\;\forall N\;\forall F:\mathrm{Formula}(N),\quad
+\mathrm{time}_{\mathrm{conv}}\bigl(\mathrm{minimizeList}(F.\mathrm{bitList})\bigr)\leq c(N+1)^d,
+\end{equation}
+where $\mathrm{time}_{\mathrm{conv}}$ is the step count of \lean{canonicalWordProgram}.
+The separate \lean{ConverterInterface} module proves \lean{no\_polyProgram\_canonicalWord}: no \lean{PolyProgram}, whose cost is polynomial in the serialized input size alone, computes \lean{canonicalWord}, because variable names written in binary become values whose output length grows with their magnitude. The bridge therefore uses a \lean{TreeProgram} whose time is polynomial in the declared variable count $N$, which the target rate $2^{\delta N}$ absorbs. This module lies outside the final theorem's import closure.
+
+\subsection{Machine translation and executable simulation}
+\lean{MachineTranslation.lean} represents source tape cells \lean{none}, \lean{some false}, and \lean{some true} by three symbols, reindexes tapes, and proves a correspondence of initial configurations and individual transition steps. A source-machine halting trace within $s$ steps produces an output trace in the target machine model (\lean{emits\_of\_outputsInTime}).
+
+\lean{MachineRunner.lean} builds a single target program \lean{primitiveRunner M} that probes increasing step budgets, distinguishes a completed false answer from a still-running computation, and returns the eventual Boolean answer. \lean{MachineRunnerCost.lean} then establishes
+\begin{equation}
+\begin{aligned}
+&\forall M\;\exists c,e\in\mathbb N\;\forall w,b,s,\quad M.\mathrm{OutputsInTime}(w,b,s)\Longrightarrow\\
+&\qquad\mathrm{RBEval}\bigl(\mathrm{primitiveRunner}(M),\mathrm{treeEncode}(w),\\
+&\qquad\qquad c(s+|w|+1)^e,\mathrm{treeEncode}(b)\bigr).
+\end{aligned}
+\label{eq:sim}
+\end{equation}
+This is \lean{primitiveRunner\_poly}, stated as \lean{PrimitiveSimulation M (primitiveRunner M) c e}. The constants $c,e$ depend on $M$ only. The declaration \lean{simulationHypothesis\_proved} closes the previously conditional simulation interface.
+
+\subsection{Exponential-rate transfer}
+The rate argument isolates two effects. The conversion and simulation introduce polynomial factors in $N$ and the source running time. Separately, OpenAI's exponential factor $2^{A\rho(N)}$ satisfies, for every $r>0$, a bound of the form $K(N+1)^D2^{rN}$, by \lean{runtimeFactor\_expBound}; this also covers the $e$-th power introduced by the simulation, since $(2^{A\rho(N)})^e=2^{eA\rho(N)}$. The composition and SAT decoding lemmas combine the bounds at any chosen positive rate $\delta$, producing the negation of Eq.~\eqref{eq:eth}. The machine is constructed independently of the instance and its size. The verified final theorem uses the precise existential quantifiers stated in Eq.~\eqref{eq:eth}.
+
+\section{Anthropic ETH cross-formalization (RPI-ETH-010)}\label{sec:anthropic}
+The second bridge establishes a direct implication between the \emph{formal} ETH predicates defined in the two projects. In the pinned Lean environment its final declaration is:
+\begin{quote}\small\ttfamily
+ theorem OAI.Bridges.AnthropicETH.\\
+ \quad not\_positiveRateETH\_implies\_ethIsFalse :\\
+ \quad\textlnot{} OAI.ParityWL.Complexity.PositiveRateETH $\to$\\
+ \qquad MainResults.ETHIsFalse
+\end{quote}
+The theorem is unconditional: its earlier \lean{SimulationHypothesis} and \lean{ConverterHypothesis} premises were discharged by the checked declarations \lean{simulationHypothesis\_proved} and \lean{converterHypothesis\_proved}. In particular, it is not the trivial implication using Anthropic's already-existing proof of \lean{ETHIsFalse}. A transitive composition with the original bridge supplies a proof of Anthropic's formal target, while the cross-formalization theorem itself has a proof closure independent of both existing ETH/SAT proofs.
+
+\subsection{Machine semantics and input conversion}
+The source machine is ParityLifts' deterministic finite-alphabet multitape machine; the target is Mathlib's stack-based \lean{FinTM2} model, with an explicit initial configuration and a halting convention that empties work stacks and resets the state. The simulation represents each tape by left/right stacks, establishes one-step correspondence, loads the input and cleans up the result. For a source emission within $s$ steps on word $x$, the proved target bound is
+\begin{equation}
+T_{\mathrm{FinTM2}}(x,s)\le 4\bigl(|x|+s+1\bigr).
+\end{equation}
+The conversion goes in the direction needed for the implication: Anthropic's \lean{encClauses 3} encoding of a 3-CNF instance is transformed into ParityLifts' \lean{encodeFormula} of the corresponding formula. On supported formulas, \lean{Conv.conv\_encClauses} proves exact output equality, and the satisfiability translation is proved separately. The converter is an \lean{FCode}/\lean{PolyProgram} with polynomial running time on \emph{all} inputs, not only well-formed encodings. Its composition overhead has a degree fixed independently of the downstream SAT machine.
+
+\subsection{Rates, quantifiers, and dependencies}
+Anthropic's input instances have no repeated clauses. Their count and encoded length are polynomially bounded in the number $n$ of variables, so the polynomial-length overhead can be absorbed into $2^{\varepsilon n}$ at an arbitrarily small additional positive rate. The bridge chooses a source rate small enough to account for the fixed preprocessing degree and then derives Anthropic's \lean{InTime 3 $\delta$} at each positive $\delta$; the infimum-rate definition gives \lean{MainResults.ETHIsFalse}. A different source machine may be chosen at each rate, matching the quantifiers of both negated predicates.
+
+The source audit rejects forbidden module imports, out-of-scope OpenAI constants, and unwanted axioms in the final theorem's dependency closure. The copied Anthropic \lean{MainResults.lean} has SHA-256 \lean{47f78a9550d95b37d8718dd1ee16ae824da893a5e17c319f737e6d0a5ed24944}. The final theorem's reachable-constant audit reports 19,867 constants with only the three standard axioms. The source theorem and the independent check are available in the \href{https://github.com/thinkthoughts/math/tree/eth-bridge/rpi-378.3a}{cross-formalization branch} and its \href{https://github.com/thinkthoughts/math/blob/55fdced45/docs/RPI-378.3d_REPORT.md}{VPS report}.
+
+\section{Verification and reproducibility}
+\begin{center}\small
+\begin{tabular}{@{}p{0.32\linewidth}p{0.60\linewidth}@{}}\toprule
+Item&Recorded value\\\midrule
+Upstream revision&\lean{7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a}\\
+Verified C2 snapshot&\lean{81ec97cd23d21675cee4ee76768fffba33a61e17}\\
+Documentation C3 commit&\lean{81708f93f} (VPS abbreviated hash)\\
+C2 tree hash&\lean{1637f35b64e7f9f5d8f3c4e44e28007812a74f72}\\
+Toolchain&Lean 4.34.1; pinned Mathlib manifest\\
+Build target&\lean{OAI.\allowbreak{}Bridges.\allowbreak{}ETH.\allowbreak{}FinalImplication}\\
+Independent VPS result&11,600 jobs; exit status 0\\
+Final axiom dependencies&\lean{propext}; \lean{Classical.choice}; \lean{Quot.sound}\\\bottomrule
+\end{tabular}
+\end{center}
+To reproduce from the pinned project under \lean{lean/}, run:
+\begin{quote}\ttfamily\small
+LEAN\_NUM\_THREADS=2 lake build OAI.Bridges.ETH.FinalImplication
+\end{quote}
+The module includes \lean{\#print axioms OAI.\allowbreak{}Bridges.\allowbreak{}ETH.\allowbreak{}not\_positiveRateETH}. Its axiom audit tests the complete proof dependencies, including the OpenAI theorem imported as a proof term. The original OpenAI sources and Comparator settings remain unchanged by the bridge. The companion reproducibility guide~\cite{bridge} specifies the other modules, a source-integrity scan, and optional Comparator checks. OpenAI's Comparator configuration checks \lean{exact\_count\_and\_sat}; \lean{original\_sat\_main} is derived from it within OpenAI's sources and is checked by the Lean kernel during this build. Commit hashes differ between the authoring environment and the VPS because patches were applied with \lean{git am}; the tree hash is the environment-independent identifier.
+
+For RPI-ETH-010, the separate VPS run on proof commit \lean{d6b79b7d1} built \lean{OAI.Bridges.\allowbreak{}AnthropicETH.Audit} successfully (8,985 jobs) with Lean 4.34.1 and pinned Mathlib. The audit checked the final theorem, including its reachable-constant guard and axiom restrictions. The Comparator challenge \lean{AnthropicETH\allowbreak{}CrossFormalization} passed with exit zero and the messages ``Lean default kernel accepts the solution'' and ``Your solution is okay!'' The VPS Comparator configuration disabled nanoda; a \emph{separate local} standalone nanoda replay accepted the export. These are distinct checks and should not be conflated. Reproduction instructions and tool revisions are recorded in the \href{https://github.com/thinkthoughts/math/blob/55fdced45/docs/RPI-378.3d_REPORT.md}{RPI-378.3d report}. The registry entry is \href{https://github.com/thinkthoughts/rpi-index/blob/a0bef7d/data/eth.json}{RPI-ETH-010}.
+
+\section{Formal scope and related work}\label{sec:scope}
+The conclusion's meaning is determined by \lean{PositiveRateETH} and its dependencies: \lean{SATTimeBound}, machine configurations and transitions, \lean{Emits}, the definition of 3-CNF formulas, and \lean{encodeFormula}. OpenAI's \lean{MainTheorem} enters as an already kernel-checked proof term; it is absent from the final theorem's type. In our reading of these definitions, the predicate states the $s_3>0$ deterministic 3-SAT formulation~\cite{ip} with the same quantifier order, and each of its conventions asks at least as much of the refuting algorithm as the standard one: a deterministic finite-alphabet multitape Turing machine, worst-case step counts to an absorbing output state, clauses of width at most three, and an exponent measured in the declared variable count $N$ with a polynomial factor in the encoding length. The monotonicity of admissible exponential rates explains the infimum-based formulation. Equivalence across machine models and specific standard input encodings remains a mathematical interpretation of the formal specifications, separate from the kernel check.
+
+Anthropic's \emph{formal-math/eth}~\cite{anthropic} has a separately defined \lean{ETHIsFalse} target and a different machine model and toolchain. Section~\ref{sec:anthropic} now establishes the \emph{forward implication} at the Lean theorem level, using a byte-identical copy of Anthropic's trusted definition file without importing its existing ETH proof. An independent cross-formalization bridge was also discussed in Anthropic's public issue tracker~\cite{anthropicissue}. The reverse direction, and especially equivalence to the full range of textbook ETH formulations, are not established by the present proofs.
+
+A further target is the separately formalized \lean{UniformSubexponentialETH}, in which one machine with one polynomial degree must satisfy every positive-rate bound. The existing construction suggests a route to that stronger result, provided the complete decider and its polynomial degree can be fixed before the rate is selected; the theorem documented here is the checked \lean{not\_positiveRateETH} declaration.
+
+\section{Availability and next checks}
+The original proof and C3 report are public on the
+\href{https://github.com/thinkthoughts/math/tree/eth-bridge/component-B}{component-B branch} of \lean{thinkthoughts/math}.
+See \href{https://github.com/thinkthoughts/math/blob/eth-bridge/component-B/docs/ETH_BRIDGE_REPORT.md}{\lean{ETH\_BRIDGE\_REPORT.md}}, \href{https://github.com/thinkthoughts/math/blob/eth-bridge/component-B/docs/ETH_BRIDGE_REPRODUCE.md}{\lean{ETH\_BRIDGE\_REPRODUCE.\allowbreak{}md}}, and \href{https://github.com/thinkthoughts/math/blob/eth-bridge/component-B/docs/ETH_BRIDGE_MANIFEST.md}{\lean{ETH\_BRIDGE\_MANIFEST.md}}.
+The new cross-formalization proof and VPS record are on the
+\href{https://github.com/thinkthoughts/math/tree/eth-bridge/rpi-378.3a}{RPI-378.3 branch} and in its \href{https://github.com/thinkthoughts/math/blob/55fdced45/docs/RPI-378.3d_REPORT.md}{verification report}. The indexed implication is \href{https://github.com/thinkthoughts/rpi-index}{RPI-ETH-010}. Further checks concern semantic fidelity to textbook ETH, independent reproduction with a second checker, and a possible reverse machine-and-encoding reduction.
+
+\begin{thebibliography}{9}\small
+\bibitem{openai} OpenAI, \emph{math}, pinned revision \lean{7ef5c0c}, \url{https://github.com/openai/math}.
+\bibitem{bridge} \emph{ETH bridge verification and reproducibility documentation}, \url{https://github.com/thinkthoughts/math/tree/eth-bridge/component-B/docs}.
+\bibitem{anthropic} Anthropic, \emph{formal-math}, ETH development, \url{https://github.com/anthropics/formal-math/tree/main/eth}.
+\bibitem{anthropicissue} Anthropic formal-math issue tracker, cross-formalization discussion, \url{https://github.com/anthropics/formal-math/issues/36}.
+\bibitem{ip} R. Impagliazzo and R. Paturi, \emph{On the Complexity of $k$-SAT}, Journal of Computer and System Sciences 62 (2001), 367--375.
+\end{thebibliography}
+\end{document}
