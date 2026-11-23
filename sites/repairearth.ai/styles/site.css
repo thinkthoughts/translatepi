@@ -40,7 +40,7 @@ button { font: inherit; }
 .hero { padding: clamp(70px, 10vw, 135px) 0 82px; border-bottom: 1px solid var(--line); }
 .eyebrow, .card-kicker { font-size: 11px; letter-spacing: .145em; text-transform: uppercase; color: var(--accent); font-weight: 650; margin: 0 0 14px; }
 h1, h2, h3, p { overflow-wrap: break-word; }
-h1 { font-size: clamp(4rem, 10vw, 7.8rem); letter-spacing: -.075em; line-height: 1.03; font-weight: 250; margin: 0 0 28px; }
+h1 { font-size: clamp(4rem, 10vw, 7.8rem); color: gold; line-height: 1.03; font-weight: 250; margin: 0 0 28px; }
 .period { color: var(--accent); }
 .lead { max-width: 820px; font-size: clamp(1.18rem, 2.4vw, 1.7rem); line-height: 1.5; font-weight: 350; margin: 0; }
 .hero-note { color: var(--muted); max-width: 730px; margin: 22px 0 28px; }
