@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="earthrepair.ai — geographical records, physical observations, and measurable environmental research, from oceans to datacenters.">
+  <meta name="theme-color" content="#f9faf6">
+  <title>Earth repair · earthrepair.ai</title>
+  <script>
+    // Set the saved theme before painting. The shared script powers the toggle.
+    try {
+      var savedTheme = localStorage.getItem('earthrepair-theme');
+      if (savedTheme === 'dark' || savedTheme === 'light') {
+        document.documentElement.dataset.theme = savedTheme;
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    } catch (e) { /* storage may be unavailable */ }
+  </script>
+  <link rel="stylesheet" href="styles/site.css">
+  <script defer src="scripts/theme.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="/" aria-label="earthrepair.ai home">earthrepair<span>.ai</span></a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#places">Places</a>
+        <a href="#method">Reading the record</a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">◐ Theme</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="shell">
+    <section class="hero" aria-labelledby="main-heading">
+      <p class="eyebrow">Earth · geography · physical evidence</p>
+      <h1 id="main-heading">Earth repair<span class="period">.</span></h1>
+      <p class="lead">Begin with the geographical record. Read what is present on Earth, understand the processes connecting places, and develop sustainable behavior from measurable evidence.</p>
+      <p class="hero-note">Living oceans, viable rivers, thriving forests, and clean datacenters share one planet. Their histories, measurements, and changes give us starting points for research and practical care.</p>
+      <a class="text-link" href="#places">Explore the places <span aria-hidden="true">↓</span></a>
+    </section>
+
+    <section class="section" id="places" aria-labelledby="places-heading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Geographical reading points</p>
+          <h2 id="places-heading">Places and processes</h2>
+        </div>
+        <p class="section-intro">Start with what can be observed, measured, mapped, and independently examined.</p>
+      </div>
+
+      <div class="places">
+        <article class="place-card featured" id="oceans">
+          <p class="card-kicker">01 · Ocean systems</p>
+          <h3>Living oceans</h3>
+          <p>Circulation, marine chemistry, atmospheric CO₂ exchange, and the movement of carbon through seawater.</p>
+          <p class="card-meta">Research direction: open-source ocean modeling and verification with [C]Worthy.</p>
+          <a href="https://carbondioxide.now/C/" class="card-link">See the current ocean research <span aria-hidden="true">↗</span></a>
+          <p class="future-path">Planned section: <code>/oceans/</code></p>
+        </article>
+        <article class="place-card featured" id="datacenters">
+          <p class="card-kicker">02 · Built environments</p>
+          <h3>Clean datacenters</h3>
+          <p>Electricity, cooling water, local air quality, and the material footprint of computing infrastructure.</p>
+          <p class="card-meta">Research direction: clean datacenters and auditable environmental measurements.</p>
+          <span class="future-path">Planned section: <code>/datacenters/</code></span>
+        </article>
+        <article class="place-card" id="rivers">
+          <p class="card-kicker">03 · Watersheds</p>
+          <h3>Viable rivers</h3>
+          <p>Water moves through landscapes, carrying sediment, nutrients, and dissolved materials toward lakes and oceans.</p>
+          <span class="future-path">Possible section: <code>/rivers/</code></span>
+        </article>
+        <article class="place-card" id="forests">
+          <p class="card-kicker">04 · Living landscapes</p>
+          <h3>Thriving forests</h3>
+          <p>Soils, plants, wildlife, water, and changing conditions form observable relationships across landscapes.</p>
+          <span class="future-path">Possible section: <code>/forests/</code></span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section method-section" id="method" aria-labelledby="method-heading">
+      <p class="eyebrow">A shared method</p>
+      <h2 id="method-heading">Read the record. Check the relationships.</h2>
+      <div class="method-grid">
+        <div><span class="method-index">01</span><h3>Observe</h3><p>Begin with geographical features, materials, measurements, and change over time.</p></div>
+        <div><span class="method-index">02</span><h3>Specify</h3><p>Make quantities, assumptions, boundaries, and sources explicit.</p></div>
+        <div><span class="method-index">03</span><h3>Verify</h3><p>Compare scientific claims with calculations, implementations, and physical evidence.</p></div>
+      </div>
+      <p class="method-links">Related research: <a href="https://carbondioxide.now/">carbondioxide.now</a> · <a href="https://formalize.now/">formalize.now</a> · <a href="https://translatepi.ai/">translatepi.ai</a></p>
+    </section>
+  </main>
+
+  <footer class="shell footer">
+    <span>earthrepair.ai · Geographical records and sustainable behavior</span>
+    <span>Leading specifications admit trailing generalizations.</span>
+  </footer>
+</body>
+</html>
